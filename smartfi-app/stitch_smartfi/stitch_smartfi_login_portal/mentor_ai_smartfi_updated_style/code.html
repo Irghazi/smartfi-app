@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary-fixed": "#e9ddff",
+                "primary": "#60A5FA",
+                "on-surface": "#1E293B",
+                "surface-container-low": "#edf4fc",
+                "secondary": "#0058be",
+                "on-tertiary-fixed-variant": "#5516be",
+                "surface-tint": "#0060ac",
+                "secondary-fixed-dim": "#adc6ff",
+                "secondary-fixed": "#d8e2ff",
+                "on-tertiary-container": "#4600a7",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed": "#001a42",
+                "surface-container-highest": "#E2E8F0",
+                "on-tertiary-fixed": "#23005c",
+                "surface-container-lowest": "#ffffff",
+                "surface-white": "#FFFFFF",
+                "surface-variant": "#F0F7FF",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed": "#001c39",
+                "tertiary-container": "#b090ff",
+                "surface-container": "#e8eff7",
+                "text-body": "#475569",
+                "surface": "#FFFFFF",
+                "text-heading": "#1E293B",
+                "inverse-surface": "#2a3137",
+                "background-main": "#F0F7FF",
+                "primary-fixed-dim": "#a4c9ff",
+                "on-secondary-container": "#fefcff",
+                "on-error-container": "#93000a",
+                "surface-bright": "#ffffff",
+                "outline": "#94A3B8",
+                "on-primary-container": "#003a6b",
+                "on-surface-variant": "#475569",
+                "inverse-primary": "#a4c9ff",
+                "error-container": "#ffdad6",
+                "on-primary": "#ffffff",
+                "border-default": "#E2E8F0",
+                "inverse-on-surface": "#eaf1f9",
+                "success": "#10B981",
+                "secondary-container": "#2170e4",
+                "on-secondary-fixed-variant": "#004395",
+                "error": "#EF4444",
+                "surface-dim": "#d4dbe3",
+                "on-error": "#ffffff",
+                "warning": "#F59E0B",
+                "primary-fixed": "#d4e3ff",
+                "on-background": "#1E293B",
+                "primary-container": "#DBEAFE",
+                "background": "#F0F7FF",
+                "on-primary-fixed-variant": "#004883",
+                "outline-variant": "#E2E8F0",
+                "surface-container-high": "#F8FAFC",
+                "tertiary-fixed-dim": "#d0bcff",
+                "tertiary": "#6d3bd7",
+                "sidebar-hover": "#F0F7FF"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-page": "2rem",
+                "margin-desktop": "40px",
+                "stack-sm": "0.5rem",
+                "stack-lg": "1.5rem",
+                "stack-md": "1rem",
+                "gutter": "1.5rem",
+                "margin-mobile": "1rem",
+                "container-max": "1200px",
+                "base": "8px"
+        },
+        "fontFamily": {
+                "label-xs": ["Inter"],
+                "label-sm": ["Inter"],
+                "label-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "body-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "body-base": ["Inter"],
+                "headline-h2": ["Inter"],
+                "headline-h1": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "headline-xl": ["Inter"],
+                "label-button": ["Inter"],
+                "headline-h1-mobile": ["Inter"],
+                "headline-lg-mobile": ["Inter"]
+        },
+        "fontSize": {
+                "label-xs": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-h2": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "headline-h1": ["30px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-button": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "headline-h1-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+        }
+},
+    },
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+</style>
+</head><body class="bg-background-main text-text-body font-body-md antialiased flex h-screen overflow-hidden">
+<!-- Desktop SideNavBar -->
+<nav class="hidden md:flex w-64 h-screen fixed left-0 top-0 bg-surface border-r border-border-default shadow-sm flex-col py-stack-lg z-20">
+<!-- Header -->
+<div class="px-gutter mb-stack-lg flex items-center gap-3">
+<div class="rounded-full bg-background-main flex items-center justify-center shrink-0 overflow-hidden w-20 h-20 shadow-md">
+<img alt="SmartFi Logo" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI46tZ7j0cZ3NB3Qi6fWtC77DrYq-nuxF_OB3GKVx_UtO2ba7uwZD6CZsSDVoQVn_aYiijhVuCdi0sqhx9SW_cmmryg_QY2KXM72WByTAYD1nebc4ztnPSX1VB_45YEaGyN3nZr6y2JutCpudJNu1FerS32u8RwmHRdJ0hckJhe_5UlXbWMNoF_iaplX5FpWrrHQx1jGyIvh_5lRjloainO2do6PdJ4wsIgrzGI9rI8YudGFMoM084c_JsOqrqgtvGfIk"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">SmartFi</h2>
+<p class="font-label-sm text-label-sm text-text-body">Fintech Intelligence</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col flex-1 px-base gap-1">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-body font-medium hover:bg-sidebar-hover transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Beranda</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-body font-medium hover:bg-sidebar-hover transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Transaksi</span>
+</a>
+</li>
+<!-- Active State Navigation -->
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-md text-label-md">Penasihat AI</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-body font-medium hover:bg-sidebar-hover transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-md text-label-md">Kategori</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-body font-medium hover:bg-sidebar-hover transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md text-label-md">Laporan</span>
+</a>
+</li>
+</ul>
+<ul class="flex flex-col px-base mt-auto gap-1 border-t border-border-default pt-4">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-body font-medium hover:bg-sidebar-hover transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Pengaturan</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-error font-medium hover:bg-error/10 transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Keluar</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-64 h-full w-full relative">
+<!-- TopAppBar -->
+<header class="flex justify-end items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface z-10 shrink-0 md:justify-between border-b border-border-default shadow-sm"><div class="flex-1 md:flex-none"></div><div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 justify-center"><h1 class="font-headline-md text-headline-md font-bold whitespace-nowrap text-text-heading">Penasihat AI Pribadi</h1></div><div class="flex items-center ml-auto gap-4 text-text-body"><button class="text-text-body hover:text-primary hover:bg-surface-variant transition-colors duration-200 cursor-pointer p-2 rounded-full"><span class="material-symbols-outlined">help_outline</span></button><button class="text-text-body hover:text-primary hover:bg-surface-variant transition-colors duration-200 cursor-pointer p-2 rounded-full"><span class="material-symbols-outlined">notifications</span></button><div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant cursor-pointer ml-2 border border-border-default hover:border-primary transition-colors"><img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgkixgN_InbUPfQS-VhBVaAH3W0AGEn0RSeekOgwgMUlEI2LprDBinxRQXvVOsOYt9yvSuIUY6Q1iFi2ZRV-L8VfFLBa1yamA2pIwdu5C9R9bWoipvvXenW2pcDcoMiVjEsWuc3sMbioVmJeEHBd4BAtbvDFBUrUcWicXMcO-2CBtvKJaqHYgCZG3mJheqrMS1r_iIWiywqMstDxy9wXsy_WbXPlHVJ7qYUkJuj0hQH5Jlop8CZFXBgg"/></div></div></header>
+<!-- Main Chat Interface -->
+<main class="flex-1 flex flex-col p-margin-mobile md:p-margin-desktop max-w-container-max mx-auto w-full overflow-hidden h-[calc(100vh-4rem)]">
+<!-- Chat Canvas -->
+<div class="flex-1 bg-surface rounded-xl shadow-sm border border-border-default flex flex-col overflow-hidden relative">
+<!-- Chat Messages Scroll Area -->
+<div class="flex-1 overflow-y-auto chat-scroll p-gutter flex flex-col gap-6 relative z-0 bg-surface" id="chat-container">
+<!-- AI Welcome Bubble -->
+<div class="flex items-start gap-4 max-w-[85%] md:max-w-[70%]">
+<div class="w-10 h-10 rounded-full text-primary flex items-center justify-center shrink-0 shadow-sm border border-border-default overflow-hidden"><img alt="SmartFi AI" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZPPTyOhvYH4RdHUAc5AzVDn41c6xWzU02zWSXZm7ef5SrYuIFmXfKbt3li4AupjKpCKasjr9BcOnWTBbVUlM_JVeyPJblWW5mL0cKbHbevMT25EUWh_50oz20J9Q8NOzhgE37AoG96RhnAW75HK1Jho1bsFkkV4pnAcp7QyCm-eibJgV-JOCNyFbjwQJuTCiXGg6i92KBLz1llgCP-tqdaF2HOPDW6J09A-Or5f80ut3yPigCMffuKWCLSc5UyZjwCnU"/></div>
+<div class="bg-surface-variant text-text-heading px-5 py-4 rounded-2xl rounded-tl-sm shadow-sm border border-border-default">
+<p class="font-body-md leading-relaxed">Halo! Saya <strong>SmartFi</strong>, Mentor Keuangan Pribadimu.</p>
+<p class="font-body-md mt-2 leading-relaxed text-text-body">Saya telah menganalisis data transaksimu bulan ini. Apa yang ingin kamu ketahui? Kamu bisa bertanya tentang pengeluaran terbesar, saran hemat, atau prediksi saldomu di akhir bulan.</p>
+</div>
+</div>
+</div>
+<!-- Sticky Input Area -->
+<div class="shrink-0 p-gutter bg-surface border-t border-border-default relative z-10">
+<!-- Quick Actions -->
+<div class="flex gap-3 mb-4 overflow-x-auto pb-2 chat-scroll">
+<button class="shrink-0 font-label-sm text-label-sm flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-on-primary font-semibold hover:bg-primary/90 transition-all duration-300 shadow-sm" onclick="sendQuickAction('Analisis Otomatis')">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                            Analisis Otomatis
+                        </button>
+<button class="shrink-0 font-label-sm text-label-sm px-4 py-2 rounded-full bg-surface-variant text-text-body hover:bg-border-default transition-colors border border-border-default" onclick="sendQuickAction('Apa pengeluaran terbesarku?')">
+                            Pengeluaran Terbesar
+                        </button>
+<button class="shrink-0 font-label-sm text-label-sm px-4 py-2 rounded-full bg-surface-variant text-text-body hover:bg-border-default transition-colors border border-border-default" onclick="sendQuickAction('Beri saran hemat')">
+                            Saran Hemat
+                        </button>
+</div>
+<!-- Input Field Row -->
+<div class="flex items-end gap-3 bg-surface-variant p-2 rounded-xl border border-border-default focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 resize-none font-body-md text-text-heading py-2 px-3 max-h-32 placeholder:text-outline" id="chat-input" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'" placeholder="Ketik pertanyaanmu di sini..." rows="1"></textarea>
+<button class="w-12 h-12 shrink-0 bg-primary text-on-primary rounded-lg flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" id="send-btn" onclick="handleSend()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<div class="text-center mt-3">
+<span class="font-label-sm text-[10px] text-outline">SmartFi AI dapat membuat kesalahan. Harap verifikasi informasi penting.</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom NavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-border-default shadow-sm flex justify-around items-center h-16 pb-safe z-50">
+<a class="flex flex-col items-center justify-center w-full h-full text-text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-medium mt-1">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+<span class="text-[10px] font-medium mt-1">Transaksi</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary bg-primary-container/20 relative" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="text-[10px] font-bold mt-1">AI</span>
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[24px]">assessment</span>
+<span class="text-[10px] font-medium mt-1">Laporan</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-text-body hover:bg-surface-variant" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-medium mt-1">Akun</span>
+</a>
+</nav>
+<!-- JavaScript logic for AI Chat simulation -->
+<script>
+        // Mock Data Context for AI
+        const transactionData = {
+            monthlyIncome: 5000000,
+            expenses: [
+                { id: 1, category: "Sewa Tempat Tinggal", amount: 1500000, type: "Routine" },
+                { id: 2, category: "Makanan & Minuman", amount: 1200000, type: "Variable" },
+                { id: 3, category: "Transportasi", amount: 500000, type: "Variable" },
+                { id: 4, category: "Tagihan Internet", amount: 350000, type: "Routine" },
+                { id: 5, category: "Belanja Online (Anomali)", amount: 800000, type: "Impulse" },
+                { id: 6, category: "Kopi", amount: 100000, type: "Variable" },
+                { id: 7, category: "Investasi Reksadana", amount: 500000, type: "Savings" }
+            ]
+        };
+
+        const formatRupiah = (number) => {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
+        };
+
+        const chatContainer = document.getElementById('chat-container');
+        const chatInput = document.getElementById('chat-input');
+
+        // Handle Enter key in textarea
+        chatInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+            }
+        });
+
+        function sendQuickAction(text) {
+            chatInput.value = text;
+            handleSend();
+        }
+
+        async function handleSend() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Clear input and reset height
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+            
+            // Add User Message
+            addUserMessage(message);
+            scrollToBottom();
+
+            // Show Loading Indicator
+            const loadingId = addLoadingIndicator();
+            scrollToBottom();
+
+            // Simulate API Network Delay
+            await new Promise(resolve => setTimeout(resolve, 1200));
+
+            // Remove Loading Indicator
+            document.getElementById(loadingId).remove();
+
+            // Generate AI Response based on keywords
+            const response = generateAIResponse(message.toLowerCase());
+            addAIMessage(response);
+            scrollToBottom();
+        }
+
+        function addUserMessage(text) {
+            const html = `
+                <div class="flex items-start justify-end gap-4 ml-auto max-w-[85%] md:max-w-[70%]">
+                    <div class="bg-primary text-on-primary px-5 py-4 rounded-2xl rounded-tr-sm shadow-sm order-1 border border-primary">
+                        <p class="font-body-md leading-relaxed whitespace-pre-wrap">${escapeHTML(text)}</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-sm border border-border-default order-2">
+                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgkixgN_InbUPfQS-VhBVaAH3W0AGEn0RSeekOgwgMUlEI2LprDBinxRQXvVOsOYt9yvSuIUY6Q1iFi2ZRV-L8VfFLBa1yamA2pIwdu5C9R9bWoipvvXenW2pcDcoMiVjEsWuc3sMbioVmJeEHBd4BAtbvDFBUrUcWicXMcO-2CBtvKJaqHYgCZG3mJheqrMS1r_iIWiywqMstDxy9wXsy_WbXPlHVJ7qYUkJuj0hQH5Jlop8CZFXBgg" alt="User Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            `;
+            chatContainer.insertAdjacentHTML('beforeend', html);
+        }
+
+        function addAIMessage(text) {
+            // Using a simple regex to bold text between **
+            const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            const html = `
+                <div class="flex items-start gap-4 max-w-[85%] md:max-w-[70%]">
+                    <div class="w-10 h-10 rounded-full bg-surface-variant text-primary flex items-center justify-center shrink-0 shadow-sm border border-border-default overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9x61jWoDx7xsCfELsI6SGKh2TqUrFbqHUIXxCOJ9dqZKH4YTiJa8Fv7RIkBdKdCzbaXDFXDAN-Q1Vo5XeLOoNguV4QlrFNj4aEG7INc0NChZGwbpzzOnOYjjuq9EKMb0YP-zMSukUM1C7LJ-u8JAXizWghQd8Gz539suxH3TCKBpf9CqY5VaN_K0YiJHzfid2pB2ZY68tBc_XTGBKTCCv4Rfb7-Z-geZO097XLeBJtSAKedk9WWpfYYPs_5gbux19DxA" alt="SmartFi AI" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    <div class="bg-surface-variant text-text-heading px-5 py-4 rounded-2xl rounded-tl-sm shadow-sm border border-border-default">
+                        <div class="font-body-md leading-relaxed space-y-3">
+                            ${formattedText.split('\n\n').map(p => `<p>${p}</p>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatContainer.insertAdjacentHTML('beforeend', html);
+        }
+
+        function addLoadingIndicator() {
+            const id = 'loading-' + Date.now();
+            const html = `
+                <div id="${id}" class="flex items-start gap-4 max-w-[85%] md:max-w-[70%]">
+                    <div class="w-10 h-10 rounded-full bg-surface-variant text-primary flex items-center justify-center shrink-0 border border-border-default overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoWoGwyMnrNHDQCKwRrF1_dxglbGIkU_FsabOJ5I2jTcu1xiOl6fZbjYmrXWiiAUdt6_rvX_u6saTAK2KwTPMEJYXkMAxPY_NCDzoKcU4GbGY0zOCKkkvPLFEUnUu7O4eYnvbDZXpbDsYIVvqp0T01-Qy3iJwjZH30v7VqIaaI0hJsHoUEdtZj29vehXZKXRhjFXeXnCBWolwHjLvEWhtT2UThxHQbJuY7GeyzwcgH42vGFIwTiVt3yAGlVZeyLzrncg4" alt="SmartFi AI" class="w-full h-full object-contain rounded-full">
+                    </div>
+                    <div class="bg-surface-variant px-5 py-4 rounded-2xl rounded-tl-sm flex items-center gap-1 h-[56px] border border-border-default shadow-sm">
+                        <svg class="w-6 h-6 text-text-body" viewBox="0 0 24 24" fill="currentColor">
+                            <circle class="animate-bounce" cx="4" cy="12" r="2" style="animation-delay: 0ms" />
+                            <circle class="animate-bounce" cx="12" cy="12" r="2" style="animation-delay: 150ms" />
+                            <circle class="animate-bounce" cx="20" cy="12" r="2" style="animation-delay: 300ms" />
+                        </svg>
+                    </div>
+                </div>
+            `;
+            chatContainer.insertAdjacentHTML('beforeend', html);
+            return id;
+        }
+
+        function scrollToBottom() {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag])
+            );
+        }
+
+        // Logic for answering predefined intents based on the prompt's requirements
+        function generateAIResponse(query) {
+            if (query.includes('analisis otomatis') || query.includes('ringkasan')) {
+                const totalExpense = transactionData.expenses.reduce((sum, item) => sum + item.amount, 0);
+                const remaining = transactionData.monthlyIncome - totalExpense;
+                return `Berikut adalah **Ringkasan Keuangan** Anda bulan ini:\n\n• Pendapatan: **${formatRupiah(transactionData.monthlyIncome)}**\n• Total Pengeluaran: **${formatRupiah(totalExpense)}**\n• Sisa Saldo: **${formatRupiah(remaining)}**\n\nSaya mendeteksi ada **1 transaksi anomali** (Belanja Online). Apakah Anda ingin saya rincikan?`;
+            }
+            
+            if (query.includes('pengeluaran terbesar')) {
+                const maxExpense = transactionData.expenses.reduce((max, current) => (max.amount > current.amount) ? max : current);
+                return `Pengeluaran terbesar Anda bulan ini adalah untuk **${maxExpense.category}** sebesar **${formatRupiah(maxExpense.amount)}**.\n\nIni mencakup ${(maxExpense.amount / transactionData.monthlyIncome * 100).toFixed(1)}% dari total pendapatan Anda bulan ini.`;
+            }
+
+            if (query.includes('saran hemat') || query.includes('tips')) {
+                const foodExpense = transactionData.expenses.find(e => e.category === "Makanan & Minuman");
+                return `Berdasarkan pola pengeluaran Anda, ini beberapa **saran hemat**:\n\n1. Pengeluaran **Makanan & Minuman (${formatRupiah(foodExpense.amount)})** cukup tinggi. Coba kurangi makan di luar atau pesan antar sebanyak 20% bulan depan untuk menabung lebih banyak.\n2. Alihkan sisa anggaran dari belanja impulsif langsung ke portofolio investasi Anda di awal bulan (Pay Yourself First).`;
+            }
+
+            if (query.includes('prediksi saldo') || query.includes('sisa uang')) {
+                const totalExpense = transactionData.expenses.reduce((sum, item) => sum + item.amount, 0);
+                const remaining = transactionData.monthlyIncome - totalExpense;
+                return `Jika tren pengeluaran Anda tetap seperti ini dan tidak ada biaya tak terduga besar, prediksi saldo Anda di akhir bulan adalah sekitar **${formatRupiah(remaining)}**.\n\nSebaiknya amankan sebagian dari dana ini ke tabungan darurat.`;
+            }
+
+            if (query.includes('anomali') || query.includes('aneh') || query.includes('belanja online')) {
+                return `Saya mendeteksi **pengeluaran tidak biasa** pada kategori **Belanja Online sebesar ${formatRupiah(800000)}**.\n\nBulan-bulan sebelumnya, alokasi untuk ini biasanya di bawah Rp 300.000. Apakah ini pembelian yang sudah direncanakan? Jika tidak, pertimbangkan aturan "tunggu 24 jam" sebelum checkout keranjang belanja di masa depan.`;
+            }
+
+            return "Maaf, saya belum sepenuhnya memahami pertanyaan tersebut. Namun, saya dapat membantu menganalisis **pengeluaran terbesar**, memberikan **saran hemat**, atau melihat **prediksi saldo** Anda. Apa yang ingin Anda coba?";
+        }
+    </script>
+</body></html>

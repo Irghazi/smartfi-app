@@ -1,0 +1,184 @@
+
+---
+
+## 📄 File 2: `PROJECT_CONTEXT.md` (Updated - Final Version)
+
+```markdown
+# PROJECT CONTEXT: SmartFi (Real Product - Universal - Final)
+
+## 1. IDENTITAS PRODUK
+- **Nama Aplikasi:** SmartFi
+- **Tagline:** Catat Keuangan + Mentor AI Pribadi
+- **Deskripsi Singkat:** Aplikasi pencatatan keuangan pribadi berbasis web (SaaS) yang universal. Siapa pun bisa mencatat pemasukan dan pengeluaran dengan cara super cepat (cukup ketik kalimat alami, AI yang memproses), lalu mendapatkan analisis serta saran cerdas dari Mentor AI Pribadi.
+- **Model Bisnis:** Freemium dengan Trial 7 Hari. Premium Rp 29.000/bulan atau Lifetime Rp 299.000.
+- **Status:** Pengembangan aktif (MVP).
+
+---
+
+## 2. TARGET PASAR (Universal - Tanpa Role)
+Semua kalangan tanpa terkecuali: Mahasiswa, Karyawan, Freelancer, Ibu Rumah Tangga, hingga Pedagang Kecil. **Tidak ada pilihan role saat registrasi.**
+
+---
+
+## 3. TECH STACK (WAJIB!)
+| Lapisan | Teknologi | Keterangan |
+| :--- | :--- | :--- |
+| **Framework** | Next.js 14 (App Router) | Server Components & API Routes. |
+| **Bahasa** | JavaScript (atau TypeScript) | Bebas, sesuaikan dengan kenyamanan. |
+| **Styling** | Tailwind CSS | Utilitas CSS cepat dan responsif. |
+| **Database & Auth** | Supabase (PostgreSQL) | Auth siap pakai, Row Level Security (RLS). |
+| **AI Gateway** | OpenRouter (Model: DeepSeek) | API key dari OpenRouter. Model: `deepseek/deepseek-chat`. |
+| **Payment Gateway** | Midtrans (Snap API) | QRIS, Virtual Account, Kartu Kredit. |
+| **Grafik & Visualisasi** | Chart.js | Untuk grafik batang, lingkaran, dan widget doughnut. |
+| **PWA (Installable)** | next-pwa | Agar user bisa menginstal aplikasi ke HP seperti native app. |
+| **Hosting** | Vercel (Frontend) + Supabase (Database) | Deployment gratis dan cepat. |
+
+---
+
+## 4. TEMA VISUAL (Dashboard - Opsi 1)
+> **WAJIB DIIKUTI!** Setiap kode UI yang dihasilkan harus menggunakan warna di bawah ini.
+
+| Elemen | Warna / Atribut | Kode Hex / Class Tailwind |
+| :--- | :--- | :--- |
+| **Background Utama** | Biru sangat muda | `#F0F7FF` atau `bg-[#F0F7FF]` |
+| **Sidebar Kiri** | Putih bersih + bayangan halus | `#FFFFFF` + `shadow-sm` |
+| **Kartu (Card), Tabel, Komponen** | Putih + bayangan halus | `#FFFFFF` + `shadow-sm` / `shadow-md` |
+| **Aksen / Tombol Utama** | Biru muda | `#60A5FA` (hover: `#3B82F6`) |
+| **Teks Judul / Header** | Abu-abu gelap | `#1E293B` |
+| **Teks Body / Label** | Abu-abu sedang | `#475569` |
+| **Hover Menu Sidebar** | Latar biru transparan | `#DBEAFE` |
+| **Border / Garis Pemisah** | Abu-abu sangat tipis | `#E2E8F0` |
+| **Warna Status / Alert** | Hijau (sukses), Merah (error), Kuning (peringatan) | `#10B981`, `#EF4444`, `#F59E0B` |
+| **Warna Kategori Terbesar (Widget)** | Ungu | `#8B5CF6` |
+
+---
+
+## 5. STRUKTUR LAYOUT (Opsi 1 - Klasik Sidebar Kiri)
+- **Kiri:** Sidebar permanen (width: 256px di desktop).
+  - Menu (Bahasa Indonesia): Beranda, Transaksi, Mentor AI, Kategori, Laporan, Pengaturan, Keluar.
+- **Kanan (Konten Utama):**
+  - **Desktop:** 3 Kartu Saldo (baris 1), 2 Grafik (baris 2), Tabel Riwayat (baris 3).
+  - **Mobile (HP):** Widget 2x2 (baris 1 - gantikan 3 kartu saldo), 2 Grafik (baris 2 - stack vertikal), Tabel Riwayat (baris 3).
+
+---
+
+## 6. STRUKTUR DATABASE (Supabase PostgreSQL)
+> **Semua tabel wajib mengaktifkan Row Level Security (RLS).**
+
+### Tabel: profiles
+| Field | Tipe Data | Keterangan |
+| :--- | :--- | :--- |
+| `id` | UUID (FK ke `auth.users`) | Primary Key |
+| `name` | TEXT | Nama lengkap pengguna |
+| `avatar_url` | TEXT (nullable) | Foto profil (opsional) |
+| `reminder_enabled` | BOOLEAN (default: false) | Status aktif/tidak pengingat harian |
+| `reminder_time` | TIME (default: '20:00:00') | Jam pengingat harian (format 24 jam) |
+| `reminder_timezone` | TEXT (default: 'Asia/Jakarta') | Zona waktu user |
+| `target_savings` | BIGINT (default: 0) | Target tabungan bulanan (untuk widget) |
+| `created_at` | TIMESTAMP (default: NOW()) | Waktu registrasi |
+
+### Tabel: subscriptions
+| Field | Tipe Data | Keterangan |
+| :--- | :--- | :--- |
+| `id` | UUID | Primary Key |
+| `user_id` | UUID (FK ke `profiles`) | Pemilik langganan |
+| `plan` | TEXT (ENUM: 'trial', 'premium', 'lifetime') | Jenis paket |
+| `trial_ends_at` | TIMESTAMP | Kapan trial berakhir (7 hari setelah registrasi) |
+| `expires_at` | TIMESTAMP | Kapan premium/lifetime berakhir (null jika lifetime) |
+| `status` | TEXT (ENUM: 'active', 'expired', 'cancelled') | Status langganan |
+| `created_at` | TIMESTAMP | Waktu pembuatan |
+
+### Tabel: categories
+| Field | Tipe Data | Keterangan |
+| :--- | :--- | :--- |
+| `id` | UUID | Primary Key |
+| `user_id` | UUID (FK ke `profiles`) | Pemilik kategori |
+| `name` | TEXT | Nama kategori (contoh: Makanan, Transportasi) |
+| `type` | TEXT (ENUM: 'income', 'expense') | Jenis kategori |
+| `icon` | TEXT (nullable) | Nama icon Font Awesome (contoh: 'fa-utensils') |
+| `created_at` | TIMESTAMP | Waktu pembuatan |
+
+### Tabel: transactions
+| Field | Tipe Data | Keterangan |
+| :--- | :--- | :--- |
+| `id` | UUID | Primary Key |
+| `user_id` | UUID (FK ke `profiles`) | Pemilik transaksi |
+| `category_id` | UUID (FK ke `categories`) | Kategori transaksi |
+| `type` | TEXT (ENUM: 'income', 'expense') | Tipe pemasukan/pengeluaran |
+| `nominal` | BIGINT | Jumlah uang (dalam Rupiah, integer) |
+| `description` | TEXT (nullable) | Catatan / deskripsi transaksi |
+| `transaction_date` | DATE | Tanggal transaksi |
+| `created_at` | TIMESTAMP | Waktu input |
+| `updated_at` | TIMESTAMP | Waktu update terakhir |
+
+---
+
+## 7. FITUR UNGGULAN (Key Features) — Sudah Termasuk Fitur Baru
+
+### A. Smart Input (AI-Powered) — Fitur Andalan!
+Pengguna cukup ketik kalimat alami di satu kotak teks, lalu AI (DeepSeek) mem-parsing menjadi data transaksi.
+**Contoh:** *"Makan siang warteg 25 ribu"* → `{ type: 'expense', category: 'Makanan', nominal: 25000, description: 'Makan siang warteg' }`
+
+### B. Widget Lingkaran 2x2 (Mobile Dashboard) — FITUR BARU!
+Khusus untuk tampilan HP, di bagian atas dashboard tampilkan 4 lingkaran (Doughnut Chart) dalam grid 2x2:
+1. **Saldo** (Biru `#60A5FA`) — progress terhadap target tabungan.
+2. **Pemasukan** (Hijau `#10B981`) — total pemasukan bulan ini.
+3. **Pengeluaran** (Merah `#EF4444`) — total pengeluaran + sisa budget.
+4. **Kategori Terbesar** (Ungu `#8B5CF6`) — nama kategori + persentase.
+
+### C. Mentor AI Pribadi
+AI yang memiliki konteks penuh atas seluruh data transaksi user. Fungsi: Deteksi anomali, identifikasi kategori terbesar, prediksi saldo, dan 3 saran hemat.
+
+### D. Pengingat Harian (Reminder) — FITUR BARU!
+User bisa mengatur jam pengingat (1x sehari) di halaman Pengaturan.
+- **Notifikasi Browser (Web Push):** Muncul di HP di jam yang ditentukan.
+- **In-App Banner:** Muncul saat user buka aplikasi jika hari ini belum ada transaksi.
+- **Alasan 1x sehari:** Membangun kebiasaan, menghormati waktu user, menghindari spam.
+
+### E. PWA (Progressive Web App) — Installable — FITUR BARU!
+SmartFi bisa diinstal ke layar utama HP seperti aplikasi native.
+- **Android (Chrome):** Klik "Pasang Aplikasi" di address bar.
+- **iOS (Safari):** Klik "Share" → "Add to Home Screen".
+- **Keuntungan:** Fullscreen, icon di layar utama, update tanpa Play Store.
+
+### F. Manajemen Transaksi & Kategori
+CRUD lengkap + filter + search.
+
+### G. Laporan & Ekspor (PDF/Excel)
+Filter tanggal + jenis laporan, ekspor ke PDF atau Excel.
+
+---
+
+## 8. LOGIKA AI MENTOR (Prompt Sistem untuk OpenRouter)
+
+Kirimkan prompt berikut ke OpenRouter (DeepSeek) setiap kali user bertanya:
+
+```text
+Kamu adalah Mentor Keuangan Pribadi yang bijak dan ramah bernama SmartFi. 
+Tugasmu adalah membantu user mengelola keuangan berdasarkan data transaksi mereka.
+
+Berikut adalah data keuangan user (dalam format JSON):
+[DATA_TRANSAKSI_USER]
+
+Saldo saat ini: Rp [SALDO].
+Total Pemasukan bulan ini: Rp [INCOME].
+Total Pengeluaran bulan ini: Rp [EXPENSE].
+Kategori pengeluaran terbesar: [KATEGORI_TERBESAR] sebesar Rp [NOMINAL].
+
+Instruksi:
+1. Analisis singkat kebiasaan keuangan user (maksimal 2 kalimat).
+2. Berikan 3 saran spesifik dan praktis (actionable) berdasarkan data riil.
+3. Berikan prediksi sederhana: apakah saldo user akan cukup hingga akhir bulan?
+4. Bicaralah seperti teman yang peduli, bukan robot. Gunakan bahasa Indonesia.
+
+Format jawaban (markdown):
+### 💡 Analisis Singkat
+(isi)
+
+### 🎯 3 Saran Praktis untuk Kamu
+1. (saran 1)
+2. (saran 2)
+3. (saran 3)
+
+### 📊 Prediksi Saldo Akhir Bulan
+(isi prediksi)

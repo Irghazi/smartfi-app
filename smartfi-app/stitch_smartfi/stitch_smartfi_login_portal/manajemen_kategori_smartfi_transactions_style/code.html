@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manajemen Kategori - SmartFi</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d2daee",
+                        "on-tertiary-fixed": "#251a00",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-bright": "#f9f9ff",
+                        "surface-tint": "#005bc0",
+                        "inverse-on-surface": "#ecf0ff",
+                        "secondary-fixed": "#75f9ce",
+                        "on-background": "#141c2a",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-secondary-fixed-variant": "#00513d",
+                        "tertiary-fixed": "#ffdf9a",
+                        "surface-container-highest": "#dbe2f7",
+                        "tertiary": "#745800",
+                        "secondary-container": "#72f7cb",
+                        "surface-container-high": "#e0e8fd",
+                        "background": "#f9f9ff",
+                        "inverse-primary": "#adc6ff",
+                        "on-secondary-fixed": "#002117",
+                        "surface": "#f9f9ff",
+                        "primary": "#0058bc",
+                        "inverse-surface": "#293140",
+                        "on-primary-container": "#fefcff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#56ddb3",
+                        "surface-container": "#e8eeff",
+                        "secondary": "#006c52",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#936f00",
+                        "outline-variant": "#c1c6d6",
+                        "on-surface-variant": "#414754",
+                        "on-primary-fixed": "#001a41",
+                        "on-tertiary-container": "#fffbff",
+                        "outline": "#727785",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#f4bf2f",
+                        "on-tertiary-fixed-variant": "#5a4300",
+                        "surface-container-low": "#f1f3ff",
+                        "on-surface": "#141c2a",
+                        "on-secondary-container": "#007056",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#dbe2f7",
+                        "primary-fixed": "#d8e2ff",
+                        "primary-container": "#0a70e9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "container-max": "1200px",
+                        "base": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #F0F7FF; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-[#F0F7FF] text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex w-64 h-screen fixed left-0 top-0 bg-surface shadow-md flex-col py-stack-lg z-20" id="sidebar"><div class="px-gutter mb-stack-lg flex items-center gap-3"><div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center shrink-0 overflow-hidden shadow-md"><img alt="SmartFi Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxfcdyqcGPab3FgXMOAYnzI1M9HuVcepYIaV_0wgx32-SD9Sbv-rDl2f9feXLL7VBbJzG5a76eKltK1OmALsMVqKS-LDpgUmsHOyNBi7hBlqfWISgRDCdoZOwM50U3zXbOX7sYkYKaFgjbqTBkKv-VTuJaZphz2wyG3m2tiE89OWii6x97RsjqIpuTSbK5ZLKxU8VgZeBUYkU5_ZNKgHi5QqMzPiPVeGSPZijjI4UmHwaE_IIjzlscX8DSkleYWpt5mbM"/></div><div><h2 class="font-headline-md text-headline-md font-bold text-primary">SmartFi</h2><p class="font-label-sm text-label-sm text-on-surface-variant">Fintech Intelligence</p></div></div><ul class="flex flex-col flex-1 px-base gap-1"><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-label-md text-label-md">Beranda</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">receipt_long</span><span class="font-label-md text-label-md">Transaksi</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">smart_toy</span><span class="font-label-md text-label-md">Penasihat AI</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">category</span><span class="font-label-md text-label-md">Kategori</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">assessment</span><span class="font-label-md text-label-md">Laporan</span></a></li></ul><ul class="flex flex-col px-base mt-auto gap-1 border-t border-outline-variant/30 pt-4"><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">Pengaturan</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-error font-medium hover:bg-error-container transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">logout</span><span class="font-label-md text-label-md">Keluar</span></a></li></ul></aside>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="hidden md:flex justify-between items-center px-margin-desktop h-16 w-full bg-surface dark:bg-surface-container-low flat no shadows z-40 sticky top-0">
+<div class="flex items-center gap-gutter flex-1 justify-end">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200 text-on-surface-variant">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200 text-on-surface-variant">help</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden cursor-pointer shadow-sm">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young professional in a brightly lit modern office setting, representing a user profile avatar. Soft natural lighting, neutral background, high resolution, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCzcd30uuMt__2bVmmND5TON2klkbK8mxTaYnOXyb6BWkqjrl3tvuVgaBb1LfJI2QK9TSwFTkaYrcIaOu9kG1CPthHlLNSKg_wmkv-BMkjBnNANIE1GIRogYV70g4P0oW6BleJ0Gkaa1lmcmYrZXz5bjeIHtxY33Xyw5kRfEM5IdEnwjNezh6DKvenRzvTtJt4ECpePFvhzazaH2fy6xeeqot5hjmlbSwWgIzdzErhhiohjnU0S-UFNQ"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop md:pt-4 w-full flex flex-col gap-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-stack-lg gap-stack-md"><div class="flex flex-col gap-2">
+<h2 class="text-headline-lg-mobile md:text-headline-lg text-[#1E293B] font-bold">Manajemen Kategori</h2>
+<p class="text-body-md text-[#475569]">Kelola kategori transaksi sesuai kebutuhanmu.</p>
+</div>
+<button class="bg-[#60A5FA] hover:bg-[#3B82F6] text-white px-6 py-3 rounded-lg text-sm font-semibold flex items-center gap-2 transition-colors active:scale-95 shadow-sm self-start md:self-auto" onclick="openModal('add')">
+<span class="material-symbols-outlined text-sm">add</span>
+Tambah Kategori Baru
+</button></div>
+<!-- Categories Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter" id="categoryGrid">
+<div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+<span class="material-symbols-outlined text-2xl">restaurant</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="openModal('edit', 1)" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="text-outline hover:text-error transition-colors p-1" onclick="deleteCategory(1)" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">Makanan</h3>
+<span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container">
+                                Pengeluaran
+                            </span>
+</div>
+</div>
+<div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+<span class="material-symbols-outlined text-2xl">directions_car</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="openModal('edit', 2)" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="text-outline hover:text-error transition-colors p-1" onclick="deleteCategory(2)" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">Transportasi</h3>
+<span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container">
+                                Pengeluaran
+                            </span>
+</div>
+</div>
+<div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+<span class="material-symbols-outlined text-2xl">movie</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="openModal('edit', 3)" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="text-outline hover:text-error transition-colors p-1" onclick="deleteCategory(3)" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">Hiburan</h3>
+<span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container">
+                                Pengeluaran
+                            </span>
+</div>
+</div>
+<div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+<span class="material-symbols-outlined text-2xl">health_and_safety</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="openModal('edit', 4)" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="text-outline hover:text-error transition-colors p-1" onclick="deleteCategory(4)" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">Kesehatan</h3>
+<span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container">
+                                Pengeluaran
+                            </span>
+</div>
+</div>
+<div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+<span class="material-symbols-outlined text-2xl">school</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="openModal('edit', 5)" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="text-outline hover:text-error transition-colors p-1" onclick="deleteCategory(5)" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">Pendidikan</h3>
+<span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container">
+                                Pengeluaran
+                            </span>
+</div>
+</div>
+<div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+<span class="material-symbols-outlined text-2xl">receipt</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="openModal('edit', 6)" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="text-outline hover:text-error transition-colors p-1" onclick="deleteCategory(6)" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">Tagihan</h3>
+<span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container">
+                                Pengeluaran
+                            </span>
+</div>
+</div>
+<div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+</div>
+<div class="flex gap-2">
+<button class="text-outline hover:text-primary transition-colors p-1" onclick="openModal('edit', 7)" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="text-outline hover:text-error transition-colors p-1" onclick="deleteCategory(7)" title="Hapus">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">Gaji</h3>
+<span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container">
+                                Pemasukan
+                            </span>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal (Add/Edit) -->
+<div class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[100] p-margin-mobile backdrop-blur-sm transition-opacity opacity-0" id="categoryModal">
+<div class="bg-surface rounded-xl shadow-lg w-full max-w-md p-stack-md transform scale-95 transition-transform duration-200 flex flex-col gap-stack-md">
+<div class="flex justify-between items-center border-b border-surface-variant pb-stack-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface" id="modalTitle">Tambah Kategori</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-stack-md" id="categoryForm" onsubmit="handleFormSubmit(event)">
+<input id="categoryId" type="hidden"/>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface">Nama Kategori</label>
+<input class="font-body-md text-body-md bg-surface-bright border border-outline-variant rounded-lg p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="categoryName" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface">Tipe</label>
+<select class="font-body-md text-body-md bg-surface-bright border border-outline-variant rounded-lg p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="categoryType" required="">
+<option value="pengeluaran">Pengeluaran</option>
+<option value="pemasukan">Pemasukan</option>
+</select>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="font-label-md text-label-md text-on-surface">Ikon (Material Symbol)</label>
+<input class="font-body-md text-body-md bg-surface-bright border border-outline-variant rounded-lg p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="categoryIcon" placeholder="e.g. restaurant, directions_car" required="" type="text"/>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Gunakan nama ikon dari Google Material Symbols.</p>
+</div>
+<div class="flex justify-end gap-base mt-stack-sm pt-stack-sm border-t border-surface-variant">
+<button class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant py-2 px-4 rounded-lg transition-colors" onclick="closeModal()" type="button">Batal</button>
+<button class="font-label-md text-label-md bg-[#60A5FA] hover:bg-blue-500 text-white py-2 px-6 rounded-lg transition-colors shadow-sm" type="submit">Simpan</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Alert Toast (Simulated) -->
+<div class="fixed bottom-margin-desktop left-1/2 -translate-x-1/2 bg-error text-on-error font-label-md text-label-md py-3 px-6 rounded-lg shadow-lg flex items-center gap-base transition-all duration-300 transform translate-y-20 opacity-0 z-[110]" id="alertToast">
+<span class="material-symbols-outlined">error</span>
+<span class="" id="alertMessage">Kategori default tidak bisa dihapus.</span>
+</div>
+<script>
+        // State Management Simulation
+        let categories = [
+            { id: 1, name: "Makanan", type: "pengeluaran", icon: "restaurant", isDefault: true },
+            { id: 2, name: "Transportasi", type: "pengeluaran", icon: "directions_car", isDefault: true },
+            { id: 3, name: "Hiburan", type: "pengeluaran", icon: "movie", isDefault: true },
+            { id: 4, name: "Kesehatan", type: "pengeluaran", icon: "health_and_safety", isDefault: true },
+            { id: 5, name: "Pendidikan", type: "pengeluaran", icon: "school", isDefault: true },
+            { id: 6, name: "Tagihan", type: "pengeluaran", icon: "receipt", isDefault: true },
+            { id: 7, name: "Gaji", type: "pemasukan", icon: "account_balance_wallet", isDefault: true }
+        ];
+
+        const gridElement = document.getElementById('categoryGrid');
+        const modalElement = document.getElementById('categoryModal');
+        const formElement = document.getElementById('categoryForm');
+        const toastElement = document.getElementById('alertToast');
+        
+        let currentMode = 'add'; // 'add' or 'edit'
+
+        // Render Cards
+        function renderCategories() {
+            gridElement.innerHTML = '';
+            categories.forEach(cat => {
+                const typeClass = cat.type === 'pemasukan' 
+                    ? 'bg-secondary-container text-on-secondary-container' 
+                    : 'bg-error-container text-on-error-container';
+                
+                const typeLabel = cat.type === 'pemasukan' ? 'Pemasukan' : 'Pengeluaran';
+
+                const cardHtml = `
+                    <div class="bg-surface-lowest rounded-xl shadow-md p-stack-md flex flex-col gap-stack-sm border border-surface-variant hover:shadow-lg transition-shadow bg-white">
+                        <div class="flex justify-between items-start">
+                            <div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]">
+                                <span class="material-symbols-outlined text-2xl">${cat.icon}</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="openModal('edit', ${cat.id})" class="text-outline hover:text-primary transition-colors p-1" title="Edit">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button onclick="deleteCategory(${cat.id})" class="text-outline hover:text-error transition-colors p-1" title="Hapus">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-md text-[20px] leading-[28px] font-semibold text-on-surface mb-1">${cat.name}</h3>
+                            <span class="inline-block px-3 py-1 rounded-full font-label-sm text-label-sm ${typeClass}">
+                                ${typeLabel}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                gridElement.innerHTML += cardHtml;
+            });
+        }
+
+        // Modal Logic
+        function openModal(mode, id = null) {
+            currentMode = mode;
+            const modalBox = modalElement.querySelector('div');
+            
+            if (mode === 'edit') {
+                const cat = categories.find(c => c.id === id);
+                if(cat) {
+                    document.getElementById('modalTitle').innerText = 'Edit Kategori';
+                    document.getElementById('categoryId').value = cat.id;
+                    document.getElementById('categoryName').value = cat.name;
+                    document.getElementById('categoryType').value = cat.type;
+                    document.getElementById('categoryIcon').value = cat.icon;
+                }
+            } else {
+                document.getElementById('modalTitle').innerText = 'Tambah Kategori';
+                formElement.reset();
+                document.getElementById('categoryId').value = '';
+            }
+
+            modalElement.classList.remove('hidden');
+            modalElement.classList.add('flex');
+            
+            // Trigger animation
+            setTimeout(() => {
+                modalElement.classList.remove('opacity-0');
+                modalElement.classList.add('opacity-100');
+                modalBox.classList.remove('scale-95');
+                modalBox.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modalBox = modalElement.querySelector('div');
+            
+            modalElement.classList.remove('opacity-100');
+            modalElement.classList.add('opacity-0');
+            modalBox.classList.remove('scale-100');
+            modalBox.classList.add('scale-95');
+
+            setTimeout(() => {
+                modalElement.classList.add('hidden');
+                modalElement.classList.remove('flex');
+            }, 200);
+        }
+
+        // Form Submit
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('categoryId').value;
+            const name = document.getElementById('categoryName').value;
+            const type = document.getElementById('categoryType').value;
+            const icon = document.getElementById('categoryIcon').value;
+
+            if (currentMode === 'add') {
+                const newId = categories.length > 0 ? Math.max(...categories.map(c => c.id)) + 1 : 1;
+                categories.push({ id: newId, name, type, icon, isDefault: false });
+            } else if (currentMode === 'edit') {
+                const index = categories.findIndex(c => c.id == id);
+                if (index !== -1) {
+                    categories[index] = { ...categories[index], name, type, icon };
+                }
+            }
+
+            renderCategories();
+            closeModal();
+        }
+
+        // Delete Logic
+        function deleteCategory(id) {
+            const cat = categories.find(c => c.id === id);
+            if (cat && cat.isDefault) {
+                showAlert('Kategori default tidak bisa dihapus.');
+                return;
+            }
+            
+            if(confirm(`Apakah Anda yakin ingin menghapus kategori ${cat.name}?`)) {
+                categories = categories.filter(c => c.id !== id);
+                renderCategories();
+            }
+        }
+
+        // Alert Toast Logic
+        function showAlert(msg) {
+            document.getElementById('alertMessage').innerText = msg;
+            toastElement.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toastElement.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Initial Render
+        renderCategories();
+    </script>
+</body></html>

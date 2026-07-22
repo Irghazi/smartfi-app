@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SmartFi - Laporan Keuangan</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "primary": "#60A5FA",
+              "background": "#F0F7FF",
+              "surface": "#FFFFFF",
+              "on-surface": "#1E293B",
+              "on-surface-variant": "#475569",
+              "outline-variant": "#E2E8F0",
+              "success": "#10B981",
+              "error": "#EF4444",
+              "warning": "#F59E0B"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "stack-lg": "32px",
+              "stack-md": "16px",
+              "margin-mobile": "20px",
+              "container-max": "1200px",
+              "gutter": "24px",
+              "margin-desktop": "40px",
+              "base": "8px",
+              "stack-sm": "8px"
+            },
+            "fontFamily": {
+              "headline-lg-mobile": ["Manrope"],
+              "body-md": ["Manrope"],
+              "body-lg": ["Manrope"],
+              "label-sm": ["Manrope"],
+              "headline-lg": ["Manrope"],
+              "headline-md": ["Manrope"],
+              "headline-xl": ["Manrope"],
+              "label-md": ["Manrope"]
+            },
+            "fontSize": {
+              "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+              "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+              "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+              "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+              "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+              "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+              "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+              "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#F0F7FF] text-[#475569] min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex w-64 h-screen fixed left-0 top-0 bg-white border-r border-[#E2E8F0] shadow-sm flex-col py-stack-lg z-20">
+<!-- Header -->
+<div class="px-gutter mb-stack-lg flex items-center gap-3">
+<div class="rounded-full bg-[#F0F7FF] flex items-center justify-center shrink-0 overflow-hidden w-20 h-20 shadow-md">
+<img alt="SmartFi Logo" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDCVZjrvpoBypoo0ze8ECIIPNWthEdraN7Iz9K1zeYc41qKGVY-atXzh9xeJGIJjHJOu2eItrnLFKbzyvEWWhPP5Zi7EX9gsz3IEBjgD5fKxTIgvBJYxfJiCZR5h_5cjGrcal3FFepveze0LjDMNSgzrmH2Imj2i8H5rnJXxZ5De3q3aVxuBS14OC_IREbRgQbl7cQk4kbdvB7dWiwOl2Q3oTebLo2JXszZpmQ_GupaVfMXyW-QRxDS1R46d6xpvtfLJk">
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-[#60A5FA]">SmartFi</h2>
+<p class="font-label-sm text-label-sm text-[#475569]">Fintech Intelligence</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col flex-1 px-base gap-1">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#475569] font-medium hover:bg-[#F0F7FF] transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Beranda</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#475569] font-medium hover:bg-[#F0F7FF] transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Transaksi</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#475569] font-medium hover:bg-[#F0F7FF] transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-md text-label-md">Penasihat AI</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#475569] font-medium hover:bg-[#F0F7FF] transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">category</span>
+<span class="font-label-md text-label-md">Kategori</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#60A5FA] font-bold border-r-4 border-[#60A5FA] bg-[#DBEAFE] cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md text-label-md">Laporan</span>
+</a>
+</li>
+</ul>
+<ul class="flex flex-col px-base mt-auto gap-1 border-t border-[#E2E8F0] pt-4">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#475569] font-medium hover:bg-[#F0F7FF] transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Pengaturan</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#EF4444] font-medium hover:bg-[#EF4444]/10 transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Keluar</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar (Mobile) / Header Area -->
+<header class="md:hidden w-full sticky top-0 z-40 bg-white border-b border-[#E2E8F0] shadow-sm flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#60A5FA] text-2xl" data-original-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-[#60A5FA]">SmartFi</span>
+</div>
+<div class="flex items-center gap-4 text-[#475569]">
+<span class="material-symbols-outlined cursor-pointer active:scale-95 transition-transform hover:bg-[#F0F7FF] p-2 rounded-full">notifications</span>
+<span class="material-symbols-outlined cursor-pointer active:scale-95 transition-transform hover:bg-[#F0F7FF] p-2 rounded-full">account_circle</span>
+</div>
+</header>
+<div class="p-margin-mobile md:p-margin-desktop flex-1 max-w-container-max mx-auto w-full flex flex-col gap-stack-lg">
+<!-- Desktop Header Utility -->
+<header class="hidden md:flex justify-between items-center w-full">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-[#1E293B] flex items-center gap-2">
+<span class="material-symbols-outlined text-[#60A5FA]">description</span> Laporan Keuangan
+                </h2>
+<p class="font-body-md text-[#475569] mt-2">Filter dan ekspor data keuanganmu dalam format PDF atau Excel.</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-[#475569] hover:bg-[#E2E8F0] hover:text-[#60A5FA] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-[#475569] hover:bg-[#E2E8F0] hover:text-[#60A5FA] transition-colors cursor-pointer">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User Profile" class="w-10 h-10 rounded-full object-cover shadow-sm cursor-pointer border border-[#E2E8F0]" data-alt="A small circular avatar image of a professional looking individual smiling warmly, suited for a fintech dashboard profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS-pWZA3qaWOZotO400yVbw-Iiw4jFG_jJM7u3QualKpirqnrPH-d5VwlX4SVAljnfCafkDsShYgNfEg0NQ3ICnkqx9GNPglsQTWZMRfd6KdeDg7Q_ZslNjV42SopqrW8c96ab8-rNSLB4zqD_wETU_RQCJAvc8OlAx2_fmWJsdu2Hj3Ds77CpVRhgFx8tzkEE8vjhbtBcafQucb-3C4pMewhgFWRpHcNOWJVcR7DYaRgd5FJJroL_-w">
+</div>
+</header>
+<!-- Filter Card -->
+<div class="bg-white shadow-sm rounded-xl p-6 border border-[#E2E8F0]">
+<div class="flex flex-col md:flex-row gap-4 items-end">
+<div class="w-full md:w-auto flex-1">
+<label class="block font-label-md text-[#475569] mb-2">Tanggal Mulai</label>
+<input class="w-full rounded-lg border-[#E2E8F0] bg-white text-[#1E293B] focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] font-body-md py-2.5 px-3" type="date" value="2026-07-01">
+</div>
+<div class="w-full md:w-auto flex-1">
+<label class="block font-label-md text-[#475569] mb-2">Tanggal Akhir</label>
+<input class="w-full rounded-lg border-[#E2E8F0] bg-white text-[#1E293B] focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] font-body-md py-2.5 px-3" type="date" value="2026-07-31">
+</div>
+<div class="w-full md:w-auto flex-1">
+<label class="block font-label-md text-[#475569] mb-2">Jenis Laporan</label>
+<select class="w-full rounded-lg border-[#E2E8F0] bg-white text-[#1E293B] focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] font-body-md py-2.5 px-3 appearance-none">
+<option>Semua Transaksi</option>
+<option>Per Kategori</option>
+</select>
+</div>
+<button class="w-full md:w-auto bg-[#60A5FA] text-white font-label-md py-3 px-6 rounded-lg hover:bg-[#3B82F6] transition-colors shadow-sm active:scale-95 whitespace-nowrap flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+                        Generate Laporan
+                    </button>
+</div>
+</div>
+<!-- Summary Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Pemasukan -->
+<div class="bg-white p-6 rounded-xl shadow-sm border border-[#E2E8F0]">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-label-md text-[#475569] uppercase tracking-wider">Total Pemasukan</h3>
+<div class="w-10 h-10 rounded-full bg-[#10B981]/10 flex items-center justify-center text-[#10B981]">
+<span class="material-symbols-outlined">arrow_downward</span>
+</div>
+</div>
+<p class="font-headline-md text-[#1E293B]">Rp 17.000.000</p>
+</div>
+<!-- Pengeluaran -->
+<div class="bg-white p-6 rounded-xl shadow-sm border border-[#E2E8F0]">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-label-md text-[#475569] uppercase tracking-wider">Total Pengeluaran</h3>
+<div class="w-10 h-10 rounded-full bg-[#EF4444]/10 flex items-center justify-center text-[#EF4444]">
+<span class="material-symbols-outlined">arrow_upward</span>
+</div>
+</div>
+<p class="font-headline-md text-[#1E293B]">Rp 5.160.000</p>
+</div>
+<!-- Saldo Akhir -->
+<div class="bg-[#60A5FA] p-6 rounded-xl shadow-sm text-white">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-label-md text-white/90 uppercase tracking-wider">Saldo Akhir</h3>
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+<p class="font-headline-lg font-bold">Rp 11.840.000</p>
+</div>
+</div>
+<!-- Preview Table Card -->
+<div class="bg-white shadow-sm rounded-xl border border-[#E2E8F0] overflow-hidden flex flex-col">
+<div class="p-6 border-b border-[#E2E8F0] flex justify-between items-center bg-white">
+<h3 class="font-headline-md md:font-headline-md text-[#1E293B] text-lg">Detail Transaksi</h3>
+<span class="bg-[#F0F7FF] text-[#475569] font-label-sm px-3 py-1 rounded-full border border-[#E2E8F0]">Juli 2026</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F0F7FF] border-b border-[#E2E8F0] font-label-md text-[#475569]">
+<th class="py-4 px-6 font-semibold w-16">No</th>
+<th class="py-4 px-6 font-semibold">Tanggal</th>
+<th class="py-4 px-6 font-semibold">Kategori</th>
+<th class="py-4 px-6 font-semibold">Deskripsi</th>
+<th class="py-4 px-6 font-semibold text-right">Pemasukan (Rp)</th>
+<th class="py-4 px-6 font-semibold text-right">Pengeluaran (Rp)</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-[#1E293B] divide-y divide-[#E2E8F0]">
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">1</td><td class="py-3 px-6">01 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#10B981]/10 text-[#10B981] px-2 py-0.5 rounded text-sm font-medium">Pendapatan</span></td><td class="py-3 px-6">Gaji</td><td class="py-3 px-6 text-right text-[#10B981] font-medium">10.000.000</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">2</td><td class="py-3 px-6">02 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#E2E8F0] text-[#475569] px-2 py-0.5 rounded text-sm font-medium">Makanan</span></td><td class="py-3 px-6">Makan siang</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td><td class="py-3 px-6 text-right text-[#EF4444] font-medium">50.000</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">3</td><td class="py-3 px-6">03 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#E2E8F0] text-[#475569] px-2 py-0.5 rounded text-sm font-medium">Transport</span></td><td class="py-3 px-6">Bensin</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td><td class="py-3 px-6 text-right text-[#EF4444] font-medium">150.000</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">4</td><td class="py-3 px-6">05 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#E2E8F0] text-[#475569] px-2 py-0.5 rounded text-sm font-medium">Hiburan</span></td><td class="py-3 px-6">Nonton</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td><td class="py-3 px-6 text-right text-[#EF4444] font-medium">100.000</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">5</td><td class="py-3 px-6">07 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#E2E8F0] text-[#475569] px-2 py-0.5 rounded text-sm font-medium">Tagihan</span></td><td class="py-3 px-6">Listrik</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td><td class="py-3 px-6 text-right text-[#EF4444] font-medium">500.000</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">6</td><td class="py-3 px-6">15 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#10B981]/10 text-[#10B981] px-2 py-0.5 rounded text-sm font-medium">Pendapatan</span></td><td class="py-3 px-6">Bonus</td><td class="py-3 px-6 text-right text-[#10B981] font-medium">2.000.000</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">7</td><td class="py-3 px-6">16 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#E2E8F0] text-[#475569] px-2 py-0.5 rounded text-sm font-medium">Tempat Tinggal</span></td><td class="py-3 px-6">Kos</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td><td class="py-3 px-6 text-right text-[#EF4444] font-medium">2.000.000</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors">
+<td class="py-3 px-6 text-[#475569]">8</td><td class="py-3 px-6">28 Jul 2026</td><td class="py-3 px-6"><span class="bg-[#10B981]/10 text-[#10B981] px-2 py-0.5 rounded text-sm font-medium">Pendapatan</span></td><td class="py-3 px-6">THR</td><td class="py-3 px-6 text-right text-[#10B981] font-medium">5.000.000</td><td class="py-3 px-6 text-right text-[#E2E8F0]">-</td>
+</tr>
+</tbody>
+<tfoot class="bg-[#F0F7FF] border-t border-[#E2E8F0] font-label-md">
+<tr>
+<td class="py-4 px-6 text-right font-bold text-[#1E293B]" colspan="4">TOTAL</td>
+<td class="py-4 px-6 text-right font-bold text-[#10B981]">17.000.000</td>
+<td class="py-4 px-6 text-right font-bold text-[#EF4444]">5.160.000</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Export Buttons -->
+<div class="flex flex-col sm:flex-row justify-end gap-4 mt-2">
+<button class="flex items-center justify-center gap-2 bg-[#EF4444] text-white font-label-md py-3 px-6 rounded-lg hover:bg-[#EF4444]/10 hover:text-[#EF4444] transition-colors shadow-sm active:scale-95" onclick="alert('Mengunduh Laporan PDF...')"><span class="material-symbols-outlined">picture_as_pdf</span>Ekspor PDF</button>
+<button class="flex items-center justify-center gap-2 bg-[#10B981] text-white font-label-md py-3 px-6 rounded-lg hover:bg-[#059669] transition-colors shadow-sm active:scale-95" onclick="alert('Mengunduh Laporan Excel...')">
+<span class="material-symbols-outlined">table_view</span>
+                    Ekspor Excel
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-[#E2E8F0] shadow-sm flex justify-around items-center h-16 pb-safe z-50">
+<a class="flex flex-col items-center justify-center w-full h-full text-[#475569]" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-[#475569]" href="#">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-[#60A5FA]" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">assessment</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-[#475569]" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</a>
+</nav>
+
+
+
+
+
+
+</body></html>
