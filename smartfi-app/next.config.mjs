@@ -9,29 +9,14 @@ const withPWA = withPWAInit({
   reloadOnOnline: true,
   swcMinify: true,
   disable: isDev,
+  // Memastikan Workbox dari PWA tidak menyuntikkan kode ke Middleware
+  buildExcludes: [/middleware-manifest\.json$/],
 });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Konfigurasi bawaan Next.js milik pengguna (pertahankan yang ada)
-  webpack: (config, { isServer, nextRuntime, webpack }) => {
-    // Memperbaiki issue __dirname/fs/path dari third-party (seperti next-pwa) di Edge Runtime Vercel
-    if (nextRuntime === 'edge') {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        path: false,
-      };
-      // Suntikkan variabel __dirname buatan untuk menghindari ReferenceError di Edge
-      config.plugins.push(
-        new webpack.DefinePlugin({
-          __dirname: JSON.stringify('/'),
-          __filename: JSON.stringify('/'),
-        })
-      );
-    }
-    return config;
-  },
+  // Mengecualikan paket-paket ini dari kompilasi Edge Middleware agar terhindar dari error __dirname
+  serverExternalPackages: ['@supabase/ssr', '@supabase/supabase-js', '@ducanh2912/next-pwa'],
 };
 
 // KUNCI UTAMANYA DI SINI:
