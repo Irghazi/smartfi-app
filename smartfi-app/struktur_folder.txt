@@ -1,0 +1,146 @@
+smartfi-app/
+│
+├── .env.local                         # Environment variables (API Keys, Supabase URL)
+├── .gitignore                         # File yang diabaikan Git
+├── package.json                       # Daftar dependencies dan script
+├── package-lock.json (atau yarn.lock) # Lock file dependencies
+├── next.config.mjs                    # Konfigurasi Next.js + PWA (next-pwa)
+├── tailwind.config.js                 # Konfigurasi Tailwind CSS (warna custom)
+├── postcss.config.js                  # Konfigurasi PostCSS
+├── jsconfig.json (atau tsconfig.json) # Konfigurasi alias path (opsional)
+├── middleware.js                      # Middleware Next.js (proteksi route login)
+│
+├── README.md                          # Dokumentasi untuk publik/GitHub
+├── PROJECT_CONTEXT.md                 # Konteks lengkap untuk AI Coding
+├── FITUR.md                           # Dokumentasi fitur lengkap
+├── desain.md                          # Panduan desain UI/UX
+│
+├── public/
+│   ├── favicon.ico                    # Icon tab browser
+│   ├── manifest.json                  # Konfigurasi PWA (install ke HP)
+│   ├── images/
+│   │   └── smartfi_logo_2.png         # Logo utama aplikasi (milikmu)
+│   └── icons/                         # Ikon untuk PWA (192x192, 512x512)
+│       ├── icon-192.png
+│       └── icon-512.png
+│
+├── scripts/
+│   └── schema.sql                     # SQL migration untuk Supabase (opsional)
+│
+└── src/
+    ├── app/
+    │   ├── layout.js                  # Root layout (html, body, font, providers)
+    │   ├── page.js                    # Landing page / redirect ke dashboard
+    │   │
+    │   ├── (auth)/                    # Route Group: halaman tanpa sidebar
+    │   │   ├── layout.js              # Layout kosong (tanpa sidebar, fullscreen)
+    │   │   ├── login/
+    │   │   │   └── page.js            # Halaman Login (✅ Sudah)
+    │   │   └── register/
+    │   │       └── page.js            # Halaman Register (✅ Sudah)
+    │   │
+    │   ├── (dashboard)/               # Route Group: halaman dengan sidebar
+    │   │   ├── layout.js              # Layout dengan Sidebar Kiri (Opsi 1)
+    │   │   ├── page.js                # Dashboard (✅ Sudah)
+    │   │   │
+    │   │   ├── transactions/
+    │   │   │   └── page.js            # Transaksi (✅ Sudah)
+    │   │   │
+    │   │   ├── ai-advisor/
+    │   │   │   └── page.js            # Mentor AI (✅ Sudah)
+    │   │   │
+    │   │   ├── categories/
+    │   │   │   └── page.js            # Kategori (✅ Sudah)
+    │   │   │
+    │   │   ├── reports/
+    │   │   │   └── page.js            # Laporan (✅ Sudah)
+    │   │   │
+    │   │   └── settings/
+    │   │       └── page.js            # Pengaturan & Profil (✅ Sudah)
+    │   │
+    │   └── api/                       # API Routes (Backend-nya Next.js)
+    │       ├── auth/
+    │       │   └── logout/
+    │       │       └── route.js       # Logout handler
+    │       │
+    │       ├── transactions/
+    │       │   ├── route.js           # GET (semua) & POST (tambah)
+    │       │   └── [id]/
+    │       │       └── route.js       # PUT (edit) & DELETE (hapus) per ID
+    │       │
+    │       ├── categories/
+    │       │   ├── route.js           # GET & POST
+    │       │   └── [id]/
+    │       │       └── route.js       # PUT & DELETE
+    │       │
+    │       ├── ai/
+    │       │   └── chat/
+    │       │       └── route.js       # POST (kirim prompt ke OpenRouter)
+    │       │
+    │       ├── dashboard/
+    │       │   └── summary/
+    │       │       └── route.js       # GET (total saldo, grafik, dll)
+    │       │
+    │       └── midtrans/
+    │           └── webhook/
+    │               └── route.js       # POST (handler notifikasi pembayaran)
+    │
+    ├── components/                    # Semua komponen UI (reusable)
+    │   │
+    │   ├── ui/                        # Komponen Atomik / Generik
+    │   │   ├── Button.jsx             # Tombol (primer, sekunder, danger)
+    │   │   ├── Card.jsx               # Kartu putih dengan shadow
+    │   │   ├── Input.jsx              # Input teks, number, date
+    │   │   ├── Modal.jsx              # Modal / Pop-up
+    │   │   └── ToggleSwitch.jsx       # Toggle switch (untuk Reminder)
+    │   │
+    │   ├── layout/                    # Komponen Struktur Utama
+    │   │   ├── Sidebar.jsx            # Sidebar Kiri (menu: Beranda, Transaksi, dll)
+    │   │   └── Header.jsx             # Top Bar (Avatar, Notifikasi)
+    │   │
+    │   ├── dashboard/                 # Komponen khusus Dashboard
+    │   │   ├── SaldoCard.jsx          # 1 Kartu Saldo (Pemasukan/Saldo/Pengeluaran)
+    │   │   ├── BarChart.jsx           # Grafik Batang (Chart.js)
+    │   │   ├── PieChart.jsx           # Grafik Lingkaran (Chart.js)
+    │   │   ├── Widget2x2.jsx          # 4 Widget Lingkaran (Mobile)
+    │   │   └── RecentTransactions.jsx # Tabel 5 transaksi terakhir
+    │   │
+    │   ├── transactions/              # Komponen khusus Transaksi
+    │   │   ├── SmartInput.jsx         # Kotak teks + AI parsing
+    │   │   ├── ManualForm.jsx         # Form manual (dropdown, nominal, dll)
+    │   │   ├── TransactionTable.jsx   # Tabel dengan filter & sorting
+    │   │   └── TransactionFilters.jsx # Search, filter kategori, tanggal
+    │   │
+    │   ├── ai-advisor/                # Komponen khusus Mentor AI
+    │   │   ├── ChatBox.jsx            # Area chat (bubble user & AI)
+    │   │   ├── ChatInput.jsx          # Input teks + tombol kirim
+    │   │   ├── InsightCard.jsx        # Kartu rekomendasi (opsional)
+    │   │   └── LoadingDots.jsx        # Animasi loading "AI sedang mengetik"
+    │   │
+    │   ├── categories/                # Komponen khusus Kategori
+    │   │   ├── CategoryChip.jsx       # Chip kategori (icon + nama + label)
+    │   │   └── CategoryModal.jsx      # Modal tambah/edit kategori
+    │   │
+    │   ├── reports/                   # Komponen khusus Laporan
+    │   │   ├── FilterForm.jsx         # Form filter tanggal & jenis laporan
+    │   │   ├── ReportSummary.jsx      # 3 Kartu ringkasan (Total, Pengeluaran, Saldo)
+    │   │   └── ReportTable.jsx        # Tabel pratinjau (2 mode: detail/kategori)
+    │   │
+    │   └── settings/                  # Komponen khusus Pengaturan
+    │       ├── ProfileCard.jsx        # Profil (nama, email, avatar)
+    │       ├── TargetSavingsCard.jsx  # Target tabungan bulanan
+    │       ├── ReminderCard.jsx       # Toggle + Time Picker
+    │       └── SubscriptionCard.jsx   # Status langganan + tombol upgrade
+    │
+    ├── lib/                           # Utilitas & Konfigurasi
+    │   ├── supabase/
+    │   │   ├── client.js              # Supabase client untuk client-side (browser)
+    │   │   └── server.js              # Supabase client untuk server-side (API Routes)
+    │   │
+    │   ├── openrouter.js              # Konfigurasi OpenRouter (API Key, model)
+    │   ├── midtrans.js                # Konfigurasi Midtrans (client key, server key)
+    │   ├── utils.js                   # Fungsi bantu: formatRupiah, formatTanggal, dll.
+    │   └── validators.js              # Validasi input (email, nominal, dll.)
+    │
+    └── styles/
+        └── globals.css                # CSS global (override Tailwind jika perlu)

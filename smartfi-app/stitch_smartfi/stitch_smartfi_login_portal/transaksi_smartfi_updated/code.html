@@ -1,0 +1,422 @@
+<!DOCTYPE html><html class="light" lang="id"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-container": "#936f00",
+                        "surface-container-high": "#e0e8fd",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-tint": "#005bc0",
+                        "primary": "#0058bc",
+                        "secondary-fixed": "#75f9ce",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#141c2a",
+                        "secondary-fixed-dim": "#56ddb3",
+                        "surface-variant": "#dbe2f7",
+                        "on-tertiary-fixed-variant": "#5a4300",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-fixed-dim": "#f4bf2f",
+                        "surface-container-highest": "#dbe2f7",
+                        "on-surface-variant": "#414754",
+                        "on-secondary-fixed-variant": "#00513d",
+                        "background": "#f9f9ff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-tertiary-fixed": "#251a00",
+                        "on-secondary-fixed": "#002117",
+                        "tertiary-fixed": "#ffdf9a",
+                        "tertiary": "#745800",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#141c2a",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9ff",
+                        "outline": "#727785",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#72f7cb",
+                        "on-secondary-container": "#007056",
+                        "surface-dim": "#d2daee",
+                        "on-primary-container": "#fefcff",
+                        "inverse-on-surface": "#ecf0ff",
+                        "on-primary-fixed": "#001a41",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#e8eeff",
+                        "inverse-surface": "#293140",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary": "#006c52",
+                        "outline-variant": "#c1c6d6",
+                        "on-primary-fixed-variant": "#004493",
+                        "inverse-primary": "#adc6ff",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d8e2ff",
+                        "primary-container": "#0a70e9",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "8px",
+                        "container-max": "1200px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "40px"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "system-ui", "sans-serif"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "body-lg": ["Manrope"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    }catch(_e){}</script></head><body class="bg-background text-on-surface font-sans antialiased min-h-screen flex">
+<!-- Mobile Header -->
+<div class="md:hidden flex justify-between items-center px-margin-mobile h-16 w-full fixed top-0 bg-surface-container-lowest shadow-sm z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-original-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">SmartFi</span>
+</div>
+<button id="mobile-menu-btn" class="text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- SideNavBar -->
+<aside id="sidebar" class="hidden md:flex w-64 h-screen fixed left-0 top-0 bg-surface shadow-md flex-col py-stack-lg z-20"><div class="px-gutter mb-stack-lg flex items-center gap-3"><div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center shrink-0 overflow-hidden shadow-md"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDal6ASNi4TARKNbbDHuhOQUay05TSYZ37FCa2qxaP4JLEdbO3FMu1StCrn1m8kpkotGyVxXrABF0uj0ONJ0GmaQ9CN_sGL4TNVUvjdeTmRu6-Xuj-wjY6kNnu5NrlKHN_nIF-isfGTloXSQD7k6cDkNcqKnV9w_J4PbjgOtWXZOmmFJ7pZ8w7Na2HxuQqEw2a7p2EoSPdjvUnFlVJpWaeq5ZKZiZ67ba5wXzMMWUHTXFFeLUPYn7r654tCxG-3lhduBfY" alt="SmartFi Logo" class="w-full h-full object-contain"></div><div><h2 class="font-headline-md text-headline-md font-bold text-primary">SmartFi</h2><p class="font-label-sm text-label-sm text-on-surface-variant">Fintech Intelligence</p></div></div><ul class="flex flex-col flex-1 px-base gap-1"><li class=""><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform"><span class="material-symbols-outlined">dashboard</span><span class="font-label-md text-label-md">Beranda</span></a></li><li class=""><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 cursor-pointer active:scale-95 transition-transform"><span class="material-symbols-outlined">receipt_long</span><span class="font-label-md text-label-md">Transaksi</span></a></li><li class=""><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform"><span class="material-symbols-outlined">smart_toy</span><span class="font-label-md text-label-md">Penasihat AI</span></a></li><li class=""><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform"><span class="material-symbols-outlined">category</span><span class="font-label-md text-label-md">Kategori</span></a></li><li class=""><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform"><span class="material-symbols-outlined">assessment</span><span class="font-label-md text-label-md">Laporan</span></a></li></ul><ul class="flex flex-col px-base mt-auto gap-1 border-t border-outline-variant/30 pt-4"><li class=""><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">Pengaturan</span></a></li><li class=""><a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-error font-medium hover:bg-error-container transition-colors duration-200 cursor-pointer active:scale-95 transition-transform"><span class="material-symbols-outlined">logout</span><span class="font-label-md text-label-md">Keluar</span></a></li></ul></aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:ml-64 flex flex-col min-h-screen mt-16 md:mt-0 transition-all duration-300">
+<!-- TopAppBar (JSON Component Logic) -->
+<header class="hidden md:flex justify-between items-center mb-stack-lg p-margin-desktop pb-0">
+<h2 class="font-headline-md text-[24px] font-semibold text-[#1E293B]">Transaksi</h2>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors cursor-pointer">
+<i class="fa-regular fa-bell text-xl"></i>
+</button>
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full object-cover shadow-sm border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdmu5Lhora50C677KpqY4Qal27yFnakbtVeYJbgXJKz-TIx0QmdjmV8eBf72LkMB_EEZW7gGhJaXmnFKlcRsxorCL35m9R7nqTzhkYokqTGG6CKRugcPMFGNbqFUjxMFFPbAv8Ry5KiwzUaC5qUcVFUWCL93j7hBDf73x24nXKnDdowjEI_ALuQGpBvxfAK0017k9fy-LRLTCTdSoQO3Pa76aZnwvSwaoHbJYtT6_Q8luYul5IPXNw5A">
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 p-margin-mobile md:p-margin-desktop md:pt-4 w-full flex flex-col gap-stack-lg">
+<div class="flex flex-col gap-2">
+<h2 class="text-headline-lg-mobile md:text-headline-lg text-[#1E293B] font-bold">Kelola Transaksi</h2>
+<p class="text-body-md text-[#475569]">Catat dan pantau arus kas Anda dengan mudah.</p>
+</div>
+<!-- Bento Grid Layout for Forms & Summary -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Main Form Card -->
+<div class="lg:col-span-2 bg-surface-container-lowest shadow-[0_20px_25px_-5px_rgba(28,36,51,0.05)] border border-surface-container rounded-xl p-6 flex flex-col gap-stack-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container opacity-5 rounded-bl-full -z-10"></div>
+<div class="flex items-center justify-between border-b border-surface-variant pb-4">
+<h3 class="text-[20px] font-semibold text-[#1E293B]">Input Transaksi</h3>
+<!-- Tabs -->
+<div class="flex bg-surface-container-low rounded-lg p-1">
+<button class="px-4 py-2 rounded-md text-sm font-semibold bg-white shadow-sm text-primary transition-all" id="tab-smart">Smart AI</button>
+<button class="px-4 py-2 rounded-md text-sm font-semibold text-on-surface-variant hover:text-primary transition-all" id="tab-manual">Manual</button>
+</div>
+</div>
+<!-- Smart AI Mode Content -->
+<div class="flex flex-col gap-stack-md transition-opacity duration-300" id="form-smart">
+<div class="flex flex-col gap-stack-sm">
+<label class="text-sm font-semibold text-[#1E293B]" for="ai-input">Ceritakan transaksi Anda</label>
+<div class="relative">
+<i class="fa-solid fa-robot absolute left-4 top-4 text-outline"></i>
+<textarea class="w-full pl-12 pr-4 py-3 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-body-md resize-none transition-colors" id="ai-input" placeholder="Contoh: Makan siang di warteg habis 25 ribu, pakai tunai..." rows="3"></textarea>
+</div>
+</div>
+<div class="flex justify-end">
+<button class="bg-[#60A5FA] hover:bg-[#3B82F6] text-white px-6 py-3 rounded-lg text-sm font-semibold flex items-center gap-2 transition-colors active:scale-95">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+                                Proses dengan AI
+                            </button>
+</div>
+<!-- AI Preview (Hidden by default, shown for demo) -->
+<div class="mt-4 p-4 rounded-lg bg-surface-container-low border border-surface-variant flex flex-col gap-stack-md hidden">
+<h4 class="text-sm font-semibold text-[#1E293B] flex items-center gap-2">
+<i class="fa-solid fa-circle-check text-[#10B981]"></i>
+                                Hasil Analisis AI
+                            </h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div>
+<span class="block text-xs font-medium text-on-surface-variant">Tipe</span>
+<span class="text-base text-[#EF4444]">Pengeluaran</span>
+</div>
+<div>
+<span class="block text-xs font-medium text-on-surface-variant">Kategori</span>
+<span class="text-base text-[#1E293B]">Makanan</span>
+</div>
+<div>
+<span class="block text-xs font-medium text-on-surface-variant">Nominal</span>
+<span class="text-base font-bold text-[#1E293B]">Rp 25.000</span>
+</div>
+<div>
+<span class="block text-xs font-medium text-on-surface-variant">Deskripsi</span>
+<span class="text-base text-[#1E293B]">Makan siang di warteg</span>
+</div>
+</div>
+<div class="flex justify-end mt-2">
+<button class="bg-[#60A5FA] hover:bg-[#3B82F6] text-white px-6 py-2 rounded-lg text-sm font-semibold transition-colors active:scale-95">
+                                    Simpan Transaksi
+                                </button>
+</div>
+</div>
+</div>
+<!-- Manual Mode Content (Hidden by default) -->
+<div class="flex flex-col gap-stack-md hidden transition-opacity duration-300" id="form-manual">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="flex flex-col gap-stack-sm">
+<label class="text-sm font-semibold text-[#1E293B]">Tipe Transaksi</label>
+<select class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-base">
+<option value="expense">Pengeluaran</option>
+<option value="income">Pemasukan</option>
+</select>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="text-sm font-semibold text-[#1E293B]">Tanggal</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-base" type="date" value="2026-07-15">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="flex flex-col gap-stack-sm">
+<label class="text-sm font-semibold text-[#1E293B]">Kategori</label>
+<select class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-base">
+<option value="makanan">Makanan</option>
+<option value="transportasi">Transportasi</option>
+<option value="hiburan">Hiburan</option>
+<option value="kesehatan">Kesehatan</option>
+<option value="pendidikan">Pendidikan</option>
+<option value="tagihan">Tagihan</option>
+<option value="gaji">Gaji</option>
+</select>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="text-sm font-semibold text-[#1E293B]">Nominal (Rp)</label>
+<div class="relative">
+<span class="absolute left-4 top-3 text-base text-outline-variant">Rp</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-base" placeholder="0" type="text">
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<label class="text-sm font-semibold text-[#1E293B]">Deskripsi</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-base" placeholder="Catatan transaksi..." type="text">
+</div>
+<div class="flex justify-end mt-4">
+<button class="bg-[#60A5FA] hover:bg-[#3B82F6] text-white px-8 py-3 rounded-lg text-sm font-semibold transition-colors active:scale-95 shadow-sm">
+                                Simpan Transaksi
+                            </button>
+</div>
+</div>
+</div>
+<!-- Summary Side Card -->
+<div class="bg-surface-container-lowest shadow-[0_20px_25px_-5px_rgba(28,36,51,0.05)] border border-surface-container rounded-xl p-6 flex flex-col gap-stack-md h-fit">
+<h3 class="text-[20px] font-semibold text-[#1E293B] border-b border-surface-variant pb-4">Ringkasan Bulan Ini</h3>
+<div class="flex flex-col gap-4">
+<div class="p-4 rounded-xl bg-surface-container-low border border-surface-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-[#10B981]/10 flex items-center justify-center text-[#10B981]">
+<i class="fa-solid fa-arrow-down"></i>
+</div>
+<div>
+<p class="text-xs font-medium text-on-surface-variant">Total Pemasukan</p>
+<p class="text-2xl font-bold text-[#1E293B]">Rp 15.000.000</p>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-surface-variant flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-[#EF4444]/10 flex items-center justify-center text-[#EF4444]">
+<i class="fa-solid fa-arrow-up"></i>
+</div>
+<div>
+<p class="text-xs font-medium text-on-surface-variant">Total Pengeluaran</p>
+<p class="text-2xl font-bold text-[#1E293B]">Rp 4.350.000</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Transactions History Card -->
+<div class="bg-surface-container-lowest shadow-[0_20px_25px_-5px_rgba(28,36,51,0.05)] border border-surface-container rounded-xl flex flex-col overflow-hidden">
+<!-- Filters Header -->
+<div class="p-6 border-b border-surface-container bg-surface-bright flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<h3 class="text-[20px] font-semibold text-[#1E293B]">Riwayat Transaksi</h3>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<div class="relative w-full sm:w-64">
+<i class="fa-solid fa-search absolute left-3 top-3 text-outline-variant text-sm"></i>
+<input class="w-full pl-9 pr-4 py-2.5 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-sm" placeholder="Cari transaksi..." type="text">
+</div>
+<select class="w-full sm:w-auto px-4 py-2.5 rounded-lg border border-outline-variant focus:border-[#60A5FA] focus:ring-1 focus:ring-[#60A5FA] bg-surface text-sm text-[#475569]">
+<option value="">Semua Kategori</option>
+<option value="makanan">Makanan</option>
+<option value="transportasi">Transportasi</option>
+</select>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-container">
+<th class="p-4 text-sm font-semibold text-on-surface-variant w-16 text-center">#</th>
+<th class="p-4 text-sm font-semibold text-on-surface-variant">Tanggal</th>
+<th class="p-4 text-sm font-semibold text-on-surface-variant">Kategori</th>
+<th class="p-4 text-sm font-semibold text-on-surface-variant">Deskripsi</th>
+<th class="p-4 text-sm font-semibold text-on-surface-variant text-right">Nominal</th>
+<th class="p-4 text-sm font-semibold text-on-surface-variant text-center w-24">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-base text-[#475569]">
+<!-- Row 1 (Income) -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-4 text-center text-outline">1</td>
+<td class="p-4">01/07/2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary">
+<i class="fa-solid fa-money-bill-wave text-sm"></i>
+</div>
+<span class="text-[#1E293B]">Gaji</span>
+</div>
+</td>
+<td class="p-4">Gaji Bulan Juli</td>
+<td class="p-4 text-right font-bold text-[#10B981]">+ Rp 15.000.000</td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<button class="p-1.5 rounded-md text-outline hover:text-[#60A5FA] hover:bg-[#60A5FA]/10 transition-colors" title="Edit">
+<i class="fa-solid fa-pen text-sm"></i>
+</button>
+<button class="p-1.5 rounded-md text-outline hover:text-[#EF4444] hover:bg-[#EF4444]/10 transition-colors" title="Hapus">
+<i class="fa-solid fa-trash text-sm"></i>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Expense) -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-4 text-center text-outline">2</td>
+<td class="p-4">02/07/2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary">
+<i class="fa-solid fa-utensils text-sm"></i>
+</div>
+<span class="text-[#1E293B]">Makanan</span>
+</div>
+</td>
+<td class="p-4">Makan siang kantor</td>
+<td class="p-4 text-right font-medium text-[#1E293B]">- Rp 45.000</td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<button class="p-1.5 rounded-md text-outline hover:text-[#60A5FA] hover:bg-[#60A5FA]/10 transition-colors" title="Edit">
+<i class="fa-solid fa-pen text-sm"></i>
+</button>
+<button class="p-1.5 rounded-md text-outline hover:text-[#EF4444] hover:bg-[#EF4444]/10 transition-colors" title="Hapus">
+<i class="fa-solid fa-trash text-sm"></i>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-4 text-center text-outline">3</td>
+<td class="p-4">03/07/2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary">
+<i class="fa-solid fa-car text-sm"></i>
+</div>
+<span class="text-[#1E293B]">Transportasi</span>
+</div>
+</td>
+<td class="p-4">Isi bensin motor</td>
+<td class="p-4 text-right font-medium text-[#1E293B]">- Rp 35.000</td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<button class="p-1.5 rounded-md text-outline hover:text-[#60A5FA] hover:bg-[#60A5FA]/10 transition-colors" title="Edit">
+<i class="fa-solid fa-pen text-sm"></i>
+</button>
+<button class="p-1.5 rounded-md text-outline hover:text-[#EF4444] hover:bg-[#EF4444]/10 transition-colors" title="Hapus">
+<i class="fa-solid fa-trash text-sm"></i>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="p-4 text-center text-outline">4</td>
+<td class="p-4">05/07/2026</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary">
+<i class="fa-solid fa-file-invoice-dollar text-sm"></i>
+</div>
+<span class="text-[#1E293B]">Tagihan</span>
+</div>
+</td>
+<td class="p-4">Token Listrik</td>
+<td class="p-4 text-right font-medium text-[#1E293B]">- Rp 200.000</td>
+<td class="p-4">
+<div class="flex justify-center gap-2">
+<button class="p-1.5 rounded-md text-outline hover:text-[#60A5FA] hover:bg-[#60A5FA]/10 transition-colors" title="Edit">
+<i class="fa-solid fa-pen text-sm"></i>
+</button>
+<button class="p-1.5 rounded-md text-outline hover:text-[#EF4444] hover:bg-[#EF4444]/10 transition-colors" title="Hapus">
+<i class="fa-solid fa-trash text-sm"></i>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-surface-container flex items-center justify-between text-sm">
+<span class="text-on-surface-variant">Menampilkan 1-4 dari 10 transaksi</span>
+<div class="flex gap-1">
+<button class="px-3 py-1 rounded-md border border-outline-variant text-on-surface-variant hover:bg-surface-container-low disabled:opacity-50" disabled="">Sebelumnya</button>
+<button class="px-3 py-1 rounded-md border border-[#60A5FA] bg-[#60A5FA] text-white">1</button>
+<button class="px-3 py-1 rounded-md border border-outline-variant text-on-surface-variant hover:bg-surface-container-low">2</button>
+<button class="px-3 py-1 rounded-md border border-outline-variant text-on-surface-variant hover:bg-surface-container-low">3</button>
+<button class="px-3 py-1 rounded-md border border-outline-variant text-on-surface-variant hover:bg-surface-container-low">Selanjutnya</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script class="">
+        // Simple tab switching logic for UI demonstration
+        document.getElementById('tab-smart').addEventListener('click', function() {
+            this.classList.add('bg-white', 'shadow-sm', 'text-primary');
+            this.classList.remove('text-on-surface-variant', 'hover:text-primary');
+            
+            const manualTab = document.getElementById('tab-manual');
+            manualTab.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+            manualTab.classList.add('text-on-surface-variant', 'hover:text-primary');
+
+            document.getElementById('form-smart').classList.remove('hidden');
+            document.getElementById('form-manual').classList.add('hidden');
+        });
+
+        document.getElementById('tab-manual').addEventListener('click', function() {
+            this.classList</script>
+
+</body></html>

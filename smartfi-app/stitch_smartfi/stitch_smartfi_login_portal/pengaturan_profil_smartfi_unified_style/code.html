@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SmartFi - Pengaturan &amp; Profil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d4e3ff",
+                        "secondary": "#0058be",
+                        "on-primary-fixed-variant": "#004883",
+                        "background": "#f6faff",
+                        "tertiary-container": "#b090ff",
+                        "inverse-on-surface": "#eaf1f9",
+                        "error": "#EF4444",
+                        "warning": "#F59E0B",
+                        "secondary-fixed": "#d8e2ff",
+                        "outline": "#717783",
+                        "primary-container": "#60a5fa",
+                        "border-default": "#E2E8F0",
+                        "success": "#10B981",
+                        "surface-container-lowest": "#ffffff",
+                        "background-main": "#F0F7FF",
+                        "on-tertiary-container": "#4600a7",
+                        "surface-variant": "#dce3eb",
+                        "on-primary-fixed": "#001c39",
+                        "surface-container-high": "#e2e9f1",
+                        "on-tertiary-fixed-variant": "#5516be",
+                        "on-surface-variant": "#414751",
+                        "text-heading": "#1E293B",
+                        "inverse-surface": "#2a3137",
+                        "sidebar-hover": "#DBEAFE",
+                        "on-tertiary-fixed": "#23005c",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-surface": "#151c22",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#e9ddff",
+                        "surface": "#f6faff",
+                        "surface-white": "#FFFFFF",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#004395",
+                        "inverse-primary": "#a4c9ff",
+                        "primary": "#0060ac",
+                        "on-background": "#151c22",
+                        "on-secondary-container": "#fefcff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#edf4fc",
+                        "on-primary-container": "#003a6b",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#a4c9ff",
+                        "surface-dim": "#d4dbe3",
+                        "tertiary-fixed-dim": "#d0bcff",
+                        "surface-bright": "#f6faff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#6d3bd7",
+                        "surface-tint": "#0060ac",
+                        "text-body": "#475569",
+                        "surface-container-highest": "#dce3eb",
+                        "surface-container": "#e8eff7",
+                        "outline-variant": "#c1c7d3",
+                        "secondary-container": "#2170e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "1rem",
+                        "stack-lg": "1.5rem",
+                        "stack-md": "1rem",
+                        "gutter": "1.5rem",
+                        "margin-page": "2rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-h2": ["Inter"],
+                        "headline-h1-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-button": ["Inter"],
+                        "headline-h1": ["Inter"],
+                        "body-base": ["Inter"],
+                        "label-xs": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-h2": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-h1-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-button": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-h1": ["30px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-base": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-xs": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F0F7FF; }
+        .toggle-checkbox:checked { right: 0; border-color: #60A5FA; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #60A5FA; }
+        .toggle-checkbox { right: 4px; z-index: 1; border-color: #e2e8f0; transition: all 0.3s; }
+        .toggle-label { width: 3rem; height: 1.5rem; background-color: #e2e8f0; border-radius: 9999px; transition: all 0.3s; }
+    </style>
+</head>
+<body class="bg-background-main font-body-base text-text-body antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex w-64 h-screen fixed left-0 top-0 bg-surface shadow-md flex-col py-stack-lg z-20" id="sidebar"><div class="px-gutter mb-stack-lg flex items-center gap-3"><div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center shrink-0 overflow-hidden shadow-md"><img alt="SmartFi Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxfcdyqcGPab3FgXMOAYnzI1M9HuVcepYIaV_0wgx32-SD9Sbv-rDl2f9feXLL7VBbJzG5a76eKltK1OmALsMVqKS-LDpgUmsHOyNBi7hBlqfWISgRDCdoZOwM50U3zXbOX7sYkYKaFgjbqTBkKv-VTuJaZphz2wyG3m2tiE89OWii6x97RsjqIpuTSbK5ZLKxU8VgZeBUYkU5_ZNKgHi5QqMzPiPVeGSPZijjI4UmHwaE_IIjzlscX8DSkleYWpt5mbM"></div><div><h2 class="font-headline-md text-headline-md font-bold text-primary">SmartFi</h2><p class="font-label-sm text-label-sm text-on-surface-variant">Fintech Intelligence</p></div></div><ul class="flex flex-col flex-1 px-base gap-1"><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-label-md text-label-md">Beranda</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">receipt_long</span><span class="font-label-md text-label-md">Transaksi</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">smart_toy</span><span class="font-label-md text-label-md">Penasihat AI</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">category</span><span class="font-label-md text-label-md">Kategori</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">assessment</span><span class="font-label-md text-label-md">Laporan</span></a></li></ul><ul class="flex flex-col px-base mt-auto gap-1 border-t border-outline-variant/30 pt-4"><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white font-bold bg-[#60A5FA] cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">settings</span><span class="font-label-md text-label-md">Pengaturan</span></a></li><li class=""><a class="flex items-center gap-3 px-4 py-3 rounded-lg text-error font-medium hover:bg-error-container transition-colors duration-200 cursor-pointer active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined">logout</span><span class="font-label-md text-label-md">Keluar</span></a></li></ul></aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-[260px] h-full relative">
+<!-- TopNavBar -->
+<header class="hidden md:flex justify-between items-center px-margin-desktop h-16 w-full bg-surface dark:bg-surface-container-low flat no shadows z-40 sticky top-0"><div class="flex items-center gap-gutter flex-1 justify-end"><div class="flex items-center gap-base"><span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200 text-on-surface-variant">notifications</span><span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors duration-200 text-on-surface-variant">help</span></div><div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden cursor-pointer shadow-sm"><img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCzcd30uuMt__2bVmmND5TON2klkbK8mxTaYnOXyb6BWkqjrl3tvuVgaBb1LfJI2QK9TSwFTkaYrcIaOu9kG1CPthHlLNSKg_wmkv-BMkjBnNANIE1GIRogYV70g4P0oW6BleJ0Gkaa1lmcmYrZXz5bjeIHtxY33Xyw5kRfEM5IdEnwjNezh6DKvenRzvTtJt4ECpePFvhzazaH2fy6xeeqot5hjmlbSwWgIzdzErhhiohjnU0S-UFNQ"></div></div></header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-page">
+<div class="max-w-5xl mx-auto space-y-stack-lg pb-24 md:pb-0">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-stack-lg gap-stack-md"><div><h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-base"><span class="text-2xl">⚙️</span> Pengaturan</h2><p class="font-body-md text-body-md text-on-surface-variant mt-stack-sm">Kelola akun, pengingat, target tabungan, dan langgananmu.</p></div></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Profil Card -->
+<div class="bg-surface-white rounded-xl shadow-md p-6 lg:p-8 border border-border-default">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]"><span class="material-symbols-outlined text-2xl">person</span></div>
+<div>
+<h2 class="font-headline-h2 text-headline-h2 text-text-heading">Profil Pengguna</h2>
+<p class="text-body-sm">Perbarui informasi dasar akun Anda.</p>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block text-body-sm font-label-button text-text-heading mb-1">Nama Lengkap</label>
+<input class="w-full px-4 py-2 rounded-lg border border-border-default focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none bg-surface-white" type="text" value="User SmartFi">
+</div>
+<div>
+<label class="block text-body-sm font-label-button text-text-heading mb-1">Email</label>
+<input class="w-full px-4 py-2 rounded-lg border border-border-default bg-surface-container-low text-on-surface-variant cursor-not-allowed" readonly="" type="email" value="user@smartfi.id">
+</div>
+<div class="pt-4 flex flex-col sm:flex-row gap-3">
+<button class="px-6 py-2 rounded-xl border border-primary-container text-primary-container bg-surface-white hover:bg-sidebar-hover font-label-button transition-colors" onclick="alert('Fitur ubah password simulasi dijalankan.')">
+                                    Ubah Password
+                                </button>
+<button class="bg-[#60A5FA] hover:bg-blue-500 text-white font-label-md text-label-md py-3 px-6 rounded-lg flex items-center gap-base transition-colors shadow-sm sm:ml-auto">
+                                    Simpan Profil
+                                </button>
+</div>
+</div>
+</div>
+<!-- Target Tabungan Card -->
+<div class="bg-surface-white rounded-xl shadow-md p-6 lg:p-8 border border-border-default flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]"><span class="material-symbols-outlined text-2xl">ads_click</span></div>
+<h2 class="font-headline-h2 text-headline-h2 text-text-heading">Target Tabungan Bulanan</h2>
+</div>
+<p class="text-body-sm mb-4">Tentukan target menabung Anda bulan ini agar AI dapat membantu merencanakan anggaran.</p>
+<div class="relative mb-6">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-label-button text-text-heading">Rp</span>
+<input class="w-full pl-12 pr-4 py-3 rounded-lg border border-border-default focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none bg-surface-white text-lg font-headline-h2 text-text-heading" type="text" value="5.000.000">
+</div>
+</div>
+<div class="mt-auto pt-4 flex justify-end">
+<button class="bg-[#60A5FA] hover:bg-blue-500 text-white font-label-md text-label-md py-3 px-6 rounded-lg flex items-center gap-base transition-colors shadow-sm w-full sm:w-auto">
+                                Simpan Target
+                            </button>
+</div>
+</div>
+<!-- Pengingat Harian Card -->
+<div class="bg-surface-white rounded-xl shadow-md p-6 lg:p-8 border border-border-default">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]"><span class="material-symbols-outlined text-2xl">alarm</span></div>
+<h2 class="font-headline-h2 text-headline-h2 text-text-heading">Pengingat Harian</h2>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-lg border border-border-default mb-4">
+<div>
+<p class="font-label-button text-text-heading">Aktifkan Pengingat</p>
+<p class="text-label-xs text-on-surface-variant">Terima notifikasi untuk mencatat pengeluaran harian.</p>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle" name="toggle" onclick="document.getElementById('timePicker').disabled = !this.checked;" type="checkbox">
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer" for="toggle"></label>
+</div>
+</div>
+<div class="mb-6">
+<label class="block text-body-sm font-label-button text-text-heading mb-1">Waktu Pengingat</label>
+<input class="w-full px-4 py-2 rounded-lg border border-border-default focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none bg-surface-white disabled:opacity-50 disabled:cursor-not-allowed" id="timePicker" type="time" value="20:00">
+</div>
+<div class="flex justify-end pt-2">
+<button class="bg-[#60A5FA] hover:bg-blue-500 text-white font-label-md text-label-md py-3 px-6 rounded-lg flex items-center gap-base transition-colors shadow-sm w-full sm:w-auto">
+                                Simpan Pengingat
+                            </button>
+</div>
+</div>
+<!-- Langganan Card -->
+<div class="bg-surface-white rounded-xl shadow-md p-6 lg:p-8 border border-border-default">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-[#60A5FA]"><span class="material-symbols-outlined text-2xl">diamond</span></div>
+<h2 class="font-headline-h2 text-headline-h2 text-text-heading">Langganan</h2>
+</div>
+<span class="px-3 py-1 bg-success/10 text-success rounded-full text-label-xs font-bold uppercase tracking-wider">
+                                Trial
+                            </span>
+</div>
+<div class="p-5 bg-gradient-to-r from-sidebar-hover to-surface-white rounded-lg border border-border-default mb-6">
+<h3 class="font-headline-h2 text-headline-h2 text-primary mb-2">SmartFi Pro</h3>
+<p class="text-body-sm text-text-body mb-4">Akses tak terbatas ke Penasihat AI, laporan kustom, dan analisis mendalam.</p>
+<div class="flex items-center text-sm text-warning font-label-button">
+<i class="fa-regular fa-clock mr-2"></i>
+                                Berlaku hingga 7 hari dari sekarang
+                            </div>
+</div>
+<div class="flex justify-end mt-auto pt-2">
+<button class="bg-[#60A5FA] hover:bg-blue-500 text-white font-label-md text-label-md py-3 px-6 rounded-lg flex items-center gap-base transition-colors shadow-sm w-full sm:w-auto" onclick="alert('Membuka halaman upgrade ke Premium.')">
+                                Tingkatkan ke Premium
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+</body></html>
