@@ -8,7 +8,8 @@ const withPWA = withPWAInit({
   aggressiveFrontEndNavCaching: false,
   reloadOnOnline: true,
   swcMinify: true,
-  disable: isDev,
+  // MATIKAN SEMENTARA DI VERCEL UNTUK TESTING
+  disable: true,
   // Memastikan Workbox dari PWA tidak menyuntikkan kode ke Middleware
   buildExcludes: [/middleware-manifest\.json$/],
 });
