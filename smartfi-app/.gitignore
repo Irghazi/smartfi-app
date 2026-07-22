@@ -23,6 +23,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+<<<<<<< HEAD
 .env
 .env.local
 .env.*
+=======
+.env*.local
+.env
+>>>>>>> f107b2e18fb877da71d659fc6a85ffcff0c0c07d
