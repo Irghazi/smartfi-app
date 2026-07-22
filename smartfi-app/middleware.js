@@ -12,9 +12,9 @@ export async function middleware(request) {
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-    // Mencegah error 500 jika variabel lingkungan belum terbaca di Vercel
+    // Mencegah error jika variabel lingkungan belum terbaca
     if (!supabaseUrl || !supabaseKey) {
-      console.error('⚠️ Supabase Environment Variables belum terbaca oleh Middleware!')
+      console.error('⚠️ Variabel Supabase belum terbaca di Middleware!')
       return supabaseResponse
     }
 
@@ -58,7 +58,6 @@ export async function middleware(request) {
     return supabaseResponse
 
   } catch (error) {
-    // Menangkap error apa pun agar tidak merusak halaman web (Mencegah 500)
     console.error('🚨 Middleware Error:', error)
     return NextResponse.next()
   }
