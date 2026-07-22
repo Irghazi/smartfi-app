@@ -15,8 +15,6 @@ const withPWA = withPWAInit({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Mengecualikan paket-paket ini dari kompilasi Edge Middleware agar terhindar dari error __dirname
-  serverExternalPackages: ['@supabase/ssr', '@supabase/supabase-js', '@ducanh2912/next-pwa'],
 };
 
 // KUNCI UTAMANYA DI SINI:
