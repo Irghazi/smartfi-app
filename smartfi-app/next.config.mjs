@@ -14,14 +14,21 @@ const withPWA = withPWAInit({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Konfigurasi bawaan Next.js milik pengguna (pertahankan yang ada)
-  webpack: (config, { isServer, nextRuntime }) => {
-    // Memperbaiki issue __dirname dari next-pwa di Edge Runtime Vercel
+  webpack: (config, { isServer, nextRuntime, webpack }) => {
+    // Memperbaiki issue __dirname/fs/path dari third-party (seperti next-pwa) di Edge Runtime Vercel
     if (nextRuntime === 'edge') {
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
         path: false,
       };
+      // Suntikkan variabel __dirname buatan untuk menghindari ReferenceError di Edge
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          __dirname: JSON.stringify('/'),
+          __filename: JSON.stringify('/'),
+        })
+      );
     }
     return config;
   },
