@@ -1,11 +1,20 @@
 import React from 'react'
+import { redirect } from 'next/navigation'
+import { createClient } from '../../lib/supabase/server'
 
 export const metadata = {
   title: 'Autentikasi - SmartFi',
   description: 'Login atau mendaftar ke SmartFi',
 }
 
-export default function AuthLayout({ children }) {
+export default async function AuthLayout({ children }) {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (user) {
+    redirect('/dashboard')
+  }
+
   return (
     <div className="min-h-screen w-full bg-[#e6f0ff] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:24px_24px] flex flex-col">
       <main className="w-full flex-1 flex flex-col relative z-10">
