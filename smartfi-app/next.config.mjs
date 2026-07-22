@@ -14,6 +14,17 @@ const withPWA = withPWAInit({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Konfigurasi bawaan Next.js milik pengguna (pertahankan yang ada)
+  webpack: (config, { isServer, nextRuntime }) => {
+    // Memperbaiki issue __dirname dari next-pwa di Edge Runtime Vercel
+    if (nextRuntime === 'edge') {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        path: false,
+      };
+    }
+    return config;
+  },
 };
 
 // KUNCI UTAMANYA DI SINI:
