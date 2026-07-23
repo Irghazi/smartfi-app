@@ -5,11 +5,14 @@ import { Smartphone, Rocket, Lightbulb, Bot, Zap, Lock } from 'lucide-react';
 import InstallButton from '../components/InstallButton';
 import { ThemeToggle } from '../components/ThemeToggle';
 
-export default function LandingPage({ searchParams }) {
+export default async function LandingPage({ searchParams }) {
+  // Tunggu searchParams karena di Next.js 15+ berbentuk Promise
+  const params = await searchParams;
+  
   // Fallback: Jika Supabase salah melempar kode OAuth ke halaman utama (Site URL)
   // kita tangkap kodenya dan teruskan ke rute callback yang benar.
-  if (searchParams?.code) {
-    redirect(`/auth/callback?code=${searchParams.code}`);
+  if (params?.code) {
+    redirect(`/auth/callback?code=${params.code}`);
   }
 
   return (
