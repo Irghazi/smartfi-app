@@ -4,19 +4,12 @@ import { redirect } from 'next/navigation';
 import { Smartphone, Rocket, Lightbulb, Bot, Zap, Lock } from 'lucide-react';
 import InstallButton from '../components/InstallButton';
 import { ThemeToggle } from '../components/ThemeToggle';
+import OAuthCallbackHandler from '../components/OAuthCallbackHandler';
 
-export default async function LandingPage({ searchParams }) {
-  // Tunggu searchParams karena di Next.js 15+ berbentuk Promise
-  const params = await searchParams;
-  
-  // Fallback: Jika Supabase salah melempar kode OAuth ke halaman utama (Site URL)
-  // kita tangkap kodenya dan teruskan ke rute callback yang benar.
-  if (params?.code) {
-    redirect(`/auth/callback?code=${params.code}`);
-  }
-
+export default function LandingPage() {
   return (
     <div className="min-h-screen w-full flex flex-col font-sans text-black dark:text-white overflow-x-hidden bg-[#e6f0ff] dark:bg-zinc-900 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#3f3f46_1px,transparent_1px),linear-gradient(to_bottom,#3f3f46_1px,transparent_1px)] bg-[size:24px_24px] transition-colors">
+      <OAuthCallbackHandler />
       
       {/* Navbar (Atas) */}
       <nav className="p-4 md:px-10 md:py-6 flex justify-between items-center z-50">
