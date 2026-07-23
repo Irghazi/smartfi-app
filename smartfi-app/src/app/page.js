@@ -1,10 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { Smartphone, Rocket, Lightbulb, Bot, Zap, Lock } from 'lucide-react';
 import InstallButton from '../components/InstallButton';
 import { ThemeToggle } from '../components/ThemeToggle';
 
-export default function LandingPage() {
+export default function LandingPage({ searchParams }) {
+  // Fallback: Jika Supabase salah melempar kode OAuth ke halaman utama (Site URL)
+  // kita tangkap kodenya dan teruskan ke rute callback yang benar.
+  if (searchParams?.code) {
+    redirect(`/auth/callback?code=${searchParams.code}`);
+  }
+
   return (
     <div className="min-h-screen w-full flex flex-col font-sans text-black dark:text-white overflow-x-hidden bg-[#e6f0ff] dark:bg-zinc-900 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#3f3f46_1px,transparent_1px),linear-gradient(to_bottom,#3f3f46_1px,transparent_1px)] bg-[size:24px_24px] transition-colors">
       
