@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }) {
   }, [])
 
   return (
-    <div className="flex min-h-screen font-sans bg-[#e6f0ff] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:24px_24px]">
+    <div className="flex min-h-screen font-sans bg-[#e6f0ff] dark:bg-zinc-900 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#3f3f46_1px,transparent_1px),linear-gradient(to_bottom,#3f3f46_1px,transparent_1px)] bg-[size:24px_24px] transition-colors">
       {/* Sidebar - Position is fixed inside the component */}
       <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
@@ -27,7 +27,7 @@ export default function DashboardLayout({ children }) {
         <Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
         
         {/* Area Konten Utama */}
-        <main className="flex-1 p-6 lg:p-8">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
           <div className="mx-auto max-w-7xl">
             {children}
           </div>

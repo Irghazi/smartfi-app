@@ -57,11 +57,11 @@ export default function LoginPage() {
 
   return (
     <div className="flex-1 w-full flex flex-col items-center justify-center p-4">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <div className="max-w-md w-full space-y-8 bg-white dark:bg-zinc-800 p-8 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
         <div className="flex flex-col items-center text-center mb-8">
           
           {/* Container Logo Neobrutalism */}
-          <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 bg-white border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center overflow-hidden">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 bg-white dark:bg-zinc-700 border-4 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center overflow-hidden">
             <Image 
               src="/images/icon-192x192.png" 
               alt="SmartFi Logo" 
@@ -72,37 +72,37 @@ export default function LoginPage() {
             />
           </div>
 
-          <h1 className="text-2xl font-bold text-black mb-2">Selamat Datang Kembali</h1>
-          <p className="text-black font-medium">Kelola finansial Anda dengan cerdas</p>
+          <h1 className="text-2xl font-bold text-black dark:text-white mb-2">Selamat Datang Kembali</h1>
+          <p className="text-black dark:text-gray-300 font-medium">Kelola finansial Anda dengan cerdas</p>
         </div>
 
         <form onSubmit={handleLogin} className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <label className="font-bold text-black">Email</label>
+            <label className="font-bold text-black dark:text-white">Email</label>
             <input
               type="email"
               placeholder="Masukkan email Anda"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full p-3 border-2 border-black focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow bg-white text-black font-medium"
+              className="w-full p-3 border-2 border-black dark:border-white focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-shadow bg-white dark:bg-zinc-700 text-black dark:text-white font-medium"
             />
           </div>
           
           <div className="flex flex-col gap-2">
-            <label className="font-bold text-black">Kata Sandi</label>
+            <label className="font-bold text-black dark:text-white">Kata Sandi</label>
             <input
               type="password"
               placeholder="Masukkan kata sandi Anda"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full p-3 border-2 border-black focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow bg-white text-black font-medium"
+              className="w-full p-3 border-2 border-black dark:border-white focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-shadow bg-white dark:bg-zinc-700 text-black dark:text-white font-medium"
             />
           </div>
 
           {error && (
-            <div className="text-sm font-bold text-white bg-red-500 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-3">
+            <div className="text-sm font-bold text-white bg-red-500 border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] p-3">
               {error}
             </div>
           )}
@@ -110,10 +110,10 @@ export default function LoginPage() {
           <button 
             type="submit" 
             disabled={isLoading || !isFormFilled} 
-            className={`w-full py-3 px-4 font-bold border-2 border-black transition-all ${
+            className={`w-full py-3 px-4 font-bold border-2 border-black dark:border-white transition-all ${
               isFormFilled 
-                ? 'bg-blue-500 text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none cursor-pointer' 
-                : 'bg-gray-300 text-gray-500 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-not-allowed'
+                ? 'bg-blue-500 text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none cursor-pointer' 
+                : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] cursor-not-allowed'
             }`}
           >
             {isLoading ? 'Memuat...' : 'Masuk'}
@@ -121,15 +121,15 @@ export default function LoginPage() {
         </form>
 
         <div className="my-6 flex items-center">
-          <div className="flex-1 border-t-2 border-black"></div>
-          <span className="px-4 text-sm font-bold text-black uppercase">atau</span>
-          <div className="flex-1 border-t-2 border-black"></div>
+          <div className="flex-1 border-t-2 border-black dark:border-white"></div>
+          <span className="px-4 text-sm font-bold text-black dark:text-white uppercase">atau</span>
+          <div className="flex-1 border-t-2 border-black dark:border-white"></div>
         </div>
 
         <button 
           type="button" 
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center py-3 px-4 bg-white font-bold text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+          className="w-full flex items-center justify-center py-3 px-4 bg-white dark:bg-zinc-700 font-bold text-black dark:text-white border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all"
         >
           <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
             <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -141,8 +141,8 @@ export default function LoginPage() {
         </button>
 
         <div className="mt-8 text-center text-sm font-bold">
-          <span className="text-black">Belum punya akun? </span>
-          <Link href="/register" className="text-blue-600 hover:text-blue-800 underline underline-offset-4 decoration-2 transition-colors">
+          <span className="text-black dark:text-gray-300">Belum punya akun? </span>
+          <Link href="/register" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline underline-offset-4 decoration-2 transition-colors">
             Ayo daftar
           </Link>
         </div>

@@ -27,11 +27,11 @@ export function Header({ onMenuClick }) {
   }, [])
 
   return (
-    <header className="sticky top-0 z-30 bg-white px-6 py-4 flex items-center justify-between border-b-4 border-black shadow-[0px_4px_0px_0px_rgba(0,0,0,1)]">
+    <header className="sticky top-0 z-30 bg-white dark:bg-zinc-900 px-4 md:px-6 py-3 md:py-4 flex items-center justify-between border-b-4 border-black dark:border-white shadow-[0px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[0px_4px_0px_0px_rgba(255,255,255,1)] transition-colors">
       {/* Tombol menu hamburger selalu di kiri */}
       <button 
         onClick={onMenuClick}
-        className="text-black bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all focus:outline-none"
+        className="text-black dark:text-white bg-white dark:bg-zinc-800 border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] p-2 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all focus:outline-none"
         aria-label="Toggle menu"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -47,7 +47,7 @@ export function Header({ onMenuClick }) {
         <div className="relative">
           <button 
             onClick={() => setIsNotifOpen(!isNotifOpen)}
-            className="text-black bg-yellow-300 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-2 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all relative flex items-center justify-center" 
+            className="text-black bg-yellow-300 dark:bg-yellow-500 border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] p-2 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all relative flex items-center justify-center" 
             aria-label="Notifikasi"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -59,8 +59,8 @@ export function Header({ onMenuClick }) {
           
           {/* Dropdown Notifikasi */}
           {isNotifOpen && (
-            <div className="absolute right-0 mt-4 w-64 bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 z-50">
-              <p className="text-black font-bold text-sm text-center">Belum ada notifikasi baru saat ini.</p>
+            <div className="absolute right-0 mt-4 w-64 bg-white dark:bg-zinc-800 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-4 z-50">
+              <p className="text-black dark:text-white font-bold text-sm text-center">Belum ada notifikasi baru saat ini.</p>
             </div>
           )}
         </div>
@@ -68,7 +68,7 @@ export function Header({ onMenuClick }) {
         {/* Avatar Pengguna */}
         <Link 
           href="/dashboard/settings" 
-          className="w-11 h-11 bg-blue-300 text-black flex items-center justify-center font-bold text-sm border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-pointer hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all overflow-hidden"
+          className="w-11 h-11 bg-blue-300 dark:bg-blue-600 text-black dark:text-white flex items-center justify-center font-bold text-sm border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] cursor-pointer hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all overflow-hidden"
           title="Pengaturan Akun"
         >
           {avatarUrl ? (

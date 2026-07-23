@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { User, Target, Bell, Wallet, CreditCard, AlertTriangle } from 'lucide-react';
+import { User, Target, Bell, Wallet, CreditCard, AlertTriangle, Monitor } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function SettingsPage() {
   const supabase = createClient();
@@ -246,44 +247,44 @@ export default function SettingsPage() {
   return (
     <div className="w-full pb-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-black uppercase tracking-tight">Pengaturan</h1>
-        <p className="text-base text-black font-bold mt-1 uppercase tracking-wider">Kelola profil, target, dan preferensi akun Anda.</p>
+        <h1 className="text-3xl font-bold text-black dark:text-white uppercase tracking-tight">Pengaturan</h1>
+        <p className="text-base text-black dark:text-gray-300 font-bold mt-1 uppercase tracking-wider">Kelola profil, target, dan preferensi akun Anda.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
         {/* Card 1: Profil */}
-        <div className="bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-[#e6f0ff] border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-              <User strokeWidth={2.5} size={24} className="text-black" />
+            <div className="w-12 h-12 bg-[#e6f0ff] dark:bg-blue-900 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center">
+              <User strokeWidth={2.5} size={24} className="text-black dark:text-white" />
             </div>
-            <h2 className="text-xl font-bold text-black uppercase">Profil Pengguna</h2>
+            <h2 className="text-xl font-bold text-black dark:text-white uppercase">Profil Pengguna</h2>
           </div>
           <div className="space-y-5">
             <div>
-              <label className="block text-sm font-bold text-black uppercase tracking-widest mb-2">Nama Lengkap</label>
+              <label className="block text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-2">Nama Lengkap</label>
               <input
                 type="text"
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
-                className="w-full px-4 py-3 border-4 border-black bg-white focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black font-bold"
+                className="w-full px-4 py-3 border-4 border-black dark:border-white bg-white dark:bg-zinc-700 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all text-black dark:text-white font-bold"
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-black uppercase tracking-widest mb-2">Email</label>
+              <label className="block text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-2">Email</label>
               <input
                 type="email"
                 value={email}
                 disabled
-                className="w-full px-4 py-3 border-4 border-black bg-gray-200 text-gray-500 cursor-not-allowed outline-none font-bold"
+                className="w-full px-4 py-3 border-4 border-black dark:border-white bg-gray-200 dark:bg-zinc-900 text-gray-500 dark:text-gray-400 cursor-not-allowed outline-none font-bold"
               />
             </div>
             <div className="pt-4">
               <button
                 onClick={updateProfile}
                 disabled={isSavingProfile}
-                className="bg-blue-500 text-black border-4 border-black px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
+                className="bg-blue-500 text-black dark:text-white border-4 border-black dark:border-white px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:disabled:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
               >
                 {isSavingProfile ? 'Menyimpan...' : 'Simpan Profil'}
               </button>
@@ -292,30 +293,30 @@ export default function SettingsPage() {
         </div>
 
         {/* Card 2: Target Tabungan */}
-        <div className="bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-[#e6f0ff] border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-              <Target strokeWidth={2.5} size={24} className="text-black" />
+            <div className="w-12 h-12 bg-[#e6f0ff] dark:bg-blue-900 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center">
+              <Target strokeWidth={2.5} size={24} className="text-black dark:text-white" />
             </div>
-            <h2 className="text-xl font-bold text-black uppercase">Target Tabungan</h2>
+            <h2 className="text-xl font-bold text-black dark:text-white uppercase">Target Tabungan</h2>
           </div>
           <div className="space-y-5">
             <div>
-              <label className="block text-sm font-bold text-black uppercase tracking-widest mb-2">Nominal Target (Rp)</label>
+              <label className="block text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-2">Nominal Target (Rp)</label>
               <input
                 type="text"
                 value={formatRupiah(savingsTarget)}
                 onChange={handleSavingsChange}
                 placeholder="Contoh: 5.000.000"
-                className="w-full px-4 py-3 border-4 border-black bg-white focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black font-bold"
+                className="w-full px-4 py-3 border-4 border-black dark:border-white bg-white dark:bg-zinc-700 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all text-black dark:text-white font-bold"
               />
             </div>
-            <p className="text-xs text-black font-bold uppercase tracking-wider">Tentukan target tabungan untuk memantau kemajuan finansial Anda setiap bulan.</p>
+            <p className="text-xs text-black dark:text-gray-300 font-bold uppercase tracking-wider">Tentukan target tabungan untuk memantau kemajuan finansial Anda setiap bulan.</p>
             <div className="pt-4">
               <button
                 onClick={updateSavingsTarget}
                 disabled={isSavingTarget}
-                className="bg-blue-500 text-black border-4 border-black px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
+                className="bg-blue-500 text-black dark:text-white border-4 border-black dark:border-white px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:disabled:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
               >
                 {isSavingTarget ? 'Menyimpan...' : 'Simpan Target'}
               </button>
@@ -323,68 +324,77 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Card 3: Notifikasi & Audio */}
-        <div className="bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        {/* Card 3: Preferensi Aplikasi */}
+        <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-[#e6f0ff] border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-              <Bell strokeWidth={2.5} size={24} className="text-black" />
+            <div className="w-12 h-12 bg-[#e6f0ff] dark:bg-blue-900 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center">
+              <Monitor strokeWidth={2.5} size={24} className="text-black dark:text-white" />
             </div>
-            <h2 className="text-xl font-bold text-black uppercase">Notifikasi & Audio</h2>
+            <h2 className="text-xl font-bold text-black dark:text-white uppercase">Preferensi Aplikasi</h2>
           </div>
           <div className="space-y-6">
+            
+            <div className="flex items-center justify-between border-b-4 border-black dark:border-white pb-6">
+              <div>
+                <p className="text-sm font-bold text-black dark:text-white uppercase tracking-widest">Tema Tampilan</p>
+                <p className="text-xs text-black dark:text-gray-300 font-bold mt-1 uppercase tracking-wider">Ubah antara Light / Dark mode.</p>
+              </div>
+              <ThemeToggle />
+            </div>
+
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-bold text-black uppercase tracking-widest">Aktifkan Pengingat</p>
-                <p className="text-xs text-black font-bold mt-1 uppercase tracking-wider">Kami akan mengingatkan Anda untuk mencatat transaksi.</p>
+                <p className="text-sm font-bold text-black dark:text-white uppercase tracking-widest">Aktifkan Pengingat</p>
+                <p className="text-xs text-black dark:text-gray-300 font-bold mt-1 uppercase tracking-wider">Kami akan mengingatkan Anda untuk mencatat transaksi.</p>
               </div>
               
               {/* Neobrutalist Toggle */}
               <button
                 onClick={() => setIsReminderActive(!isReminderActive)}
-                className={`w-16 h-8 border-4 border-black transition-colors relative flex items-center p-0.5 ${isReminderActive ? 'bg-green-400' : 'bg-gray-300'}`}
+                className={`w-16 h-8 border-4 border-black dark:border-white transition-colors relative flex items-center p-0.5 ${isReminderActive ? 'bg-green-400' : 'bg-gray-300 dark:bg-gray-600'}`}
               >
-                <div className={`w-5 h-5 border-2 border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform ${isReminderActive ? 'translate-x-8' : 'translate-x-0'}`}></div>
+                <div className={`w-5 h-5 border-2 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-transform ${isReminderActive ? 'translate-x-8' : 'translate-x-0'}`}></div>
               </button>
             </div>
 
             {isReminderActive && (
               <div className="animate-fade-in">
-                <label className="block text-sm font-bold text-black uppercase tracking-widest mb-2">Pilih Waktu</label>
+                <label className="block text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-2">Pilih Waktu</label>
                 <input
                   type="time"
                   value={reminderTime}
                   onChange={e => setReminderTime(e.target.value)}
-                  className="w-full px-4 py-3 border-4 border-black bg-white focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black font-bold"
+                  className="w-full px-4 py-3 border-4 border-black dark:border-white bg-white dark:bg-zinc-700 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all text-black dark:text-white font-bold"
                 />
               </div>
             )}
 
-            <div className="border-t-4 border-black pt-6 flex flex-col gap-6">
+            <div className="border-t-4 border-black dark:border-white pt-6 flex flex-col gap-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-bold text-black uppercase tracking-widest">Matikan Suara Klik</p>
-                  <p className="text-xs text-black font-bold mt-1 uppercase tracking-wider">Nonaktifkan efek suara saat klik tombol.</p>
+                  <p className="text-sm font-bold text-black dark:text-white uppercase tracking-widest">Matikan Suara Klik</p>
+                  <p className="text-xs text-black dark:text-gray-300 font-bold mt-1 uppercase tracking-wider">Nonaktifkan efek suara saat klik tombol.</p>
                 </div>
                 
                 <button
                   onClick={toggleClickMute}
-                  className={`w-16 h-8 border-4 border-black transition-colors relative flex items-center p-0.5 ${isClickMuted ? 'bg-red-400' : 'bg-gray-300'}`}
+                  className={`w-16 h-8 border-4 border-black dark:border-white transition-colors relative flex items-center p-0.5 ${isClickMuted ? 'bg-red-400' : 'bg-gray-300 dark:bg-gray-600'}`}
                 >
-                  <div className={`w-5 h-5 border-2 border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform ${isClickMuted ? 'translate-x-8' : 'translate-x-0'}`}></div>
+                  <div className={`w-5 h-5 border-2 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-transform ${isClickMuted ? 'translate-x-8' : 'translate-x-0'}`}></div>
                 </button>
               </div>
 
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-bold text-black uppercase tracking-widest">Matikan Suara AI</p>
-                  <p className="text-xs text-black font-bold mt-1 uppercase tracking-wider">Nonaktifkan efek suara saat AI merespons.</p>
+                  <p className="text-sm font-bold text-black dark:text-white uppercase tracking-widest">Matikan Suara AI</p>
+                  <p className="text-xs text-black dark:text-gray-300 font-bold mt-1 uppercase tracking-wider">Nonaktifkan efek suara saat AI merespons.</p>
                 </div>
                 
                 <button
                   onClick={toggleAiMute}
-                  className={`w-16 h-8 border-4 border-black transition-colors relative flex items-center p-0.5 ${isAiMuted ? 'bg-red-400' : 'bg-gray-300'}`}
+                  className={`w-16 h-8 border-4 border-black dark:border-white transition-colors relative flex items-center p-0.5 ${isAiMuted ? 'bg-red-400' : 'bg-gray-300 dark:bg-gray-600'}`}
                 >
-                  <div className={`w-5 h-5 border-2 border-black bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform ${isAiMuted ? 'translate-x-8' : 'translate-x-0'}`}></div>
+                  <div className={`w-5 h-5 border-2 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-transform ${isAiMuted ? 'translate-x-8' : 'translate-x-0'}`}></div>
                 </button>
               </div>
             </div>
@@ -393,7 +403,7 @@ export default function SettingsPage() {
               <button
                 onClick={updateReminder}
                 disabled={isSavingReminder}
-                className="bg-blue-500 text-black border-4 border-black px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
+                className="bg-blue-500 text-black dark:text-white border-4 border-black dark:border-white px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:disabled:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
               >
                 {isSavingReminder ? 'Menyimpan...' : 'Simpan Pengingat'}
               </button>
@@ -402,34 +412,34 @@ export default function SettingsPage() {
         </div>
 
         {/* Card 4: Penyesuaian Saldo */}
-        <div className="bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 bg-[#e6f0ff] border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-              <Wallet strokeWidth={2.5} size={24} className="text-black" />
+            <div className="w-12 h-12 bg-[#e6f0ff] dark:bg-blue-900 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center">
+              <Wallet strokeWidth={2.5} size={24} className="text-black dark:text-white" />
             </div>
-            <h2 className="text-xl font-bold text-black uppercase">Koreksi Saldo</h2>
+            <h2 className="text-xl font-bold text-black dark:text-white uppercase">Koreksi Saldo</h2>
           </div>
           <div className="space-y-5">
-            <div className="p-4 border-4 border-black bg-yellow-100">
-              <p className="text-xs text-black font-bold uppercase tracking-widest">Saldo Tersimpan Saat Ini:</p>
-              <p className="text-2xl font-extrabold text-black mt-1">Rp {currentBalance.toLocaleString('id-ID')}</p>
+            <div className="p-4 border-4 border-black dark:border-white bg-yellow-100 dark:bg-yellow-900">
+              <p className="text-xs text-black dark:text-white font-bold uppercase tracking-widest">Saldo Tersimpan Saat Ini:</p>
+              <p className="text-2xl font-extrabold text-black dark:text-white mt-1">Rp {currentBalance.toLocaleString('id-ID')}</p>
             </div>
             <div>
-              <label className="block text-sm font-bold text-black uppercase tracking-widest mb-2">Masukkan Saldo Aktual (Rp)</label>
+              <label className="block text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-2">Masukkan Saldo Aktual (Rp)</label>
               <input
                 type="text"
                 value={formatRupiah(newBalanceInput)}
                 onChange={handleBalanceChange}
                 placeholder="Contoh: 15.000.000"
-                className="w-full px-4 py-3 border-4 border-black bg-white focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black font-bold"
+                className="w-full px-4 py-3 border-4 border-black dark:border-white bg-white dark:bg-zinc-700 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all text-black dark:text-white font-bold"
               />
             </div>
-            <p className="text-xs text-black font-bold uppercase tracking-wider">Jika nominal aktual berbeda dengan aplikasi, SmartFi akan otomatis membuat transaksi penyesuaian agar saldo seimbang.</p>
+            <p className="text-xs text-black dark:text-gray-300 font-bold uppercase tracking-wider">Jika nominal aktual berbeda dengan aplikasi, SmartFi akan otomatis membuat transaksi penyesuaian agar saldo seimbang.</p>
             <div className="pt-4">
               <button
                 onClick={adjustBalance}
                 disabled={isSavingBalance || !newBalanceInput}
-                className="bg-blue-500 text-black border-4 border-black px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
+                className="bg-blue-500 text-black dark:text-white border-4 border-black dark:border-white px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all w-full sm:w-auto disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:disabled:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
               >
                 {isSavingBalance ? 'Memproses...' : 'Koreksi Saldo'}
               </button>
@@ -438,26 +448,26 @@ export default function SettingsPage() {
         </div>
 
         {/* Card 5: Langganan */}
-        <div className="bg-[#e6f0ff] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between">
+        <div className="bg-[#e6f0ff] dark:bg-blue-900 border-4 border-black dark:border-white p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-                  <CreditCard strokeWidth={2.5} size={24} className="text-black" />
+                <div className="w-12 h-12 bg-white dark:bg-zinc-800 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center">
+                  <CreditCard strokeWidth={2.5} size={24} className="text-black dark:text-white" />
                 </div>
-                <h2 className="text-xl font-bold text-black uppercase">Langganan</h2>
+                <h2 className="text-xl font-bold text-black dark:text-white uppercase">Langganan</h2>
               </div>
-              <span className="bg-yellow-300 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-black px-3 py-1 font-bold uppercase text-xs">TRIAL</span>
+              <span className="bg-yellow-300 dark:bg-yellow-500 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] text-black dark:text-white px-3 py-1 font-bold uppercase text-xs">TRIAL</span>
             </div>
-            <p className="text-black font-extrabold text-2xl uppercase mb-2">SmartFi Pro</p>
-            <p className="text-sm text-black font-bold uppercase tracking-wider mb-6">
+            <p className="text-black dark:text-white font-extrabold text-2xl uppercase mb-2">SmartFi Pro</p>
+            <p className="text-sm text-black dark:text-gray-300 font-bold uppercase tracking-wider mb-6">
               Anda saat ini sedang menikmati fitur lengkap masa percobaan. Tingkatkan untuk akses tak terbatas ke Penasihat AI dan Laporan Kustom.
             </p>
           </div>
           <div>
             <button
               onClick={() => alert('Fitur langganan segera hadir!')}
-              className="bg-white text-black border-4 border-black px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all w-full"
+              className="bg-white dark:bg-zinc-800 text-black dark:text-white border-4 border-black dark:border-white px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all w-full"
             >
               Tingkatkan ke Premium
             </button>
@@ -465,25 +475,25 @@ export default function SettingsPage() {
         </div>
 
         {/* Card 6: Zona Bahaya */}
-        <div className="bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-red-400 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-                  <AlertTriangle strokeWidth={2.5} size={24} className="text-black" />
+                <div className="w-12 h-12 bg-red-400 dark:bg-red-600 border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center">
+                  <AlertTriangle strokeWidth={2.5} size={24} className="text-black dark:text-white" />
                 </div>
-                <h2 className="text-xl font-bold text-black uppercase">Manajemen Data</h2>
+                <h2 className="text-xl font-bold text-black dark:text-white uppercase">Manajemen Data</h2>
               </div>
             </div>
-            <p className="text-sm text-black font-bold uppercase tracking-wider mb-6">
+            <p className="text-sm text-black dark:text-gray-300 font-bold uppercase tracking-wider mb-6">
               Hapus data riwayat transaksi anda. Hati-hati, data yang dihapus tidak dapat dikembalikan.
             </p>
             <div className="mb-6">
-              <label className="block text-sm font-bold text-black uppercase tracking-widest mb-2">Rentang Waktu</label>
+              <label className="block text-sm font-bold text-black dark:text-white uppercase tracking-widest mb-2">Rentang Waktu</label>
               <select
                 value={deleteRange}
                 onChange={(e) => setDeleteRange(e.target.value)}
-                className="w-full px-4 py-3 border-4 border-black bg-white focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all text-black font-bold appearance-none"
+                className="w-full px-4 py-3 border-4 border-black dark:border-white bg-white dark:bg-zinc-700 focus:outline-none focus:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:focus:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all text-black dark:text-white font-bold appearance-none"
               >
                 <option value="this_month">Bulan Ini</option>
                 <option value="this_year">Tahun Ini</option>
@@ -495,7 +505,7 @@ export default function SettingsPage() {
             <button
               onClick={handleDeleteTransactions}
               disabled={isDeleting || !user}
-              className="bg-red-400 text-black border-4 border-black px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all w-full disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
+              className="bg-red-400 dark:bg-red-600 text-black dark:text-white border-4 border-black dark:border-white px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none dark:active:shadow-none transition-all w-full disabled:bg-gray-400 disabled:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:disabled:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] disabled:translate-y-0 disabled:translate-x-0 disabled:cursor-not-allowed"
             >
               {isDeleting ? 'Menghapus...' : 'Hapus Riwayat'}
             </button>

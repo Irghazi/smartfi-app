@@ -116,19 +116,19 @@ export default function DashboardPage() {
     return (
       <div className="w-full pb-8 animate-pulse">
         <div className="mb-6">
-          <div className="h-10 border-4 border-black bg-gray-200 w-48 mb-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"></div>
-          <div className="h-5 border-2 border-black bg-gray-200 w-64 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div>
+          <div className="h-10 border-4 border-black dark:border-white bg-gray-200 dark:bg-zinc-700 w-48 mb-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"></div>
+          <div className="h-5 border-2 border-black dark:border-white bg-gray-200 dark:bg-zinc-700 w-64 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]"></div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="bg-gray-200 border-4 border-black h-32 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"></div>
-          ))}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+          <div className="col-span-2 md:col-span-1 order-1 md:order-2 bg-gray-200 dark:bg-zinc-700 border-4 border-black dark:border-white h-32 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"></div>
+          <div className="col-span-1 order-2 md:order-1 bg-gray-200 dark:bg-zinc-700 border-4 border-black dark:border-white h-32 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"></div>
+          <div className="col-span-1 order-3 md:order-3 bg-gray-200 dark:bg-zinc-700 border-4 border-black dark:border-white h-32 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"></div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="bg-gray-200 border-4 border-black h-80 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"></div>
-          <div className="bg-gray-200 border-4 border-black h-80 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-8">
+          <div className="bg-gray-200 dark:bg-zinc-700 border-4 border-black dark:border-white h-80 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"></div>
+          <div className="bg-gray-200 dark:bg-zinc-700 border-4 border-black dark:border-white h-80 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"></div>
         </div>
-        <div className="bg-gray-200 border-4 border-black h-64 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"></div>
+        <div className="bg-gray-200 dark:bg-zinc-700 border-4 border-black dark:border-white h-64 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]"></div>
       </div>
     );
   }
@@ -136,53 +136,59 @@ export default function DashboardPage() {
   return (
     <div className="w-full pb-8">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
-        <div className="w-12 h-12 border-4 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center flex-shrink-0">
-          <Home size={24} strokeWidth={2.5} className="text-black" />
+        <div className="w-12 h-12 border-4 border-black dark:border-white bg-white dark:bg-zinc-800 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center flex-shrink-0">
+          <Home size={24} strokeWidth={2.5} className="text-black dark:text-white" />
         </div>
         <div>
-          <h1 className="text-3xl font-bold text-black tracking-tight uppercase">Beranda</h1>
-          <p className="text-base text-black font-bold mt-1 uppercase tracking-wider">Ringkasan aktivitas keuanganmu hari ini.</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-black dark:text-white tracking-tight uppercase">Beranda</h1>
+          <p className="text-sm sm:text-base text-black dark:text-gray-300 font-bold mt-1 uppercase tracking-wider">Ringkasan aktivitas keuanganmu hari ini.</p>
         </div>
       </div>
 
       {/* Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-between transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+        {/* Saldo Terkini - On Mobile takes full width and is first */}
+        <div className="col-span-2 md:col-span-1 order-1 md:order-2 bg-blue-500 dark:bg-blue-700 border-4 border-black dark:border-white p-4 md:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] flex items-center justify-between transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)]">
           <div>
-            <p className="text-black text-sm font-bold mb-1 uppercase tracking-wider">Total Pemasukan</p>
-            <p className="text-black text-3xl font-bold">Rp {income.toLocaleString('id-ID')}</p>
+            <p className="text-white text-xs md:text-sm font-bold mb-1 uppercase tracking-wider">Saldo Terkini</p>
+            <p className="text-white text-3xl md:text-4xl font-bold truncate">Rp {balance.toLocaleString('id-ID')}</p>
+            <p className="text-white text-[10px] md:text-xs mt-1 md:mt-2 font-bold uppercase tracking-wide">Tersedia untuk digunakan</p>
           </div>
-          <div className="w-14 h-14 border-2 border-black bg-green-400 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-            <ArrowDown size={28} className="text-black" strokeWidth={3} />
-          </div>
-        </div>
-        
-        <div className="bg-blue-500 border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-between transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
-          <div>
-            <p className="text-white text-sm font-bold mb-1 uppercase tracking-wider">Saldo Terkini</p>
-            <p className="text-white text-4xl font-bold">Rp {balance.toLocaleString('id-ID')}</p>
-            <p className="text-white text-xs mt-2 font-bold uppercase tracking-wide">Tersedia untuk digunakan</p>
-          </div>
-          <div className="w-14 h-14 border-2 border-black bg-blue-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-            <Wallet size={28} className="text-black" strokeWidth={2.5} />
+          <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 border-2 border-black dark:border-white bg-blue-300 dark:bg-blue-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center ml-2">
+            <Wallet size={24} className="text-black dark:text-white md:hidden" strokeWidth={2.5} />
+            <Wallet size={28} className="text-black dark:text-white hidden md:block" strokeWidth={2.5} />
           </div>
         </div>
 
-        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex items-center justify-between transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+        {/* Pemasukan */}
+        <div className="col-span-1 order-2 md:order-1 bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-4 md:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] flex flex-col sm:flex-row sm:items-center justify-between transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] gap-2 sm:gap-0">
           <div>
-            <p className="text-black text-sm font-bold mb-1 uppercase tracking-wider">Total Pengeluaran</p>
-            <p className="text-black text-3xl font-bold">Rp {expense.toLocaleString('id-ID')}</p>
+            <p className="text-black dark:text-white text-xs md:text-sm font-bold mb-1 uppercase tracking-wider">Pemasukan</p>
+            <p className="text-black dark:text-white text-lg sm:text-xl md:text-3xl font-bold truncate">Rp {income.toLocaleString('id-ID')}</p>
           </div>
-          <div className="w-14 h-14 border-2 border-black bg-red-400 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center">
-            <ArrowUp size={28} className="text-black" strokeWidth={3} />
+          <div className="w-10 h-10 md:w-14 md:h-14 shrink-0 border-2 border-black dark:border-white bg-green-400 dark:bg-green-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center self-start sm:self-auto">
+            <ArrowDown size={20} className="text-black dark:text-white md:hidden" strokeWidth={3} />
+            <ArrowDown size={28} className="text-black dark:text-white hidden md:block" strokeWidth={3} />
+          </div>
+        </div>
+
+        {/* Pengeluaran */}
+        <div className="col-span-1 order-3 md:order-3 bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-4 md:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] flex flex-col sm:flex-row sm:items-center justify-between transition-transform hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] gap-2 sm:gap-0">
+          <div>
+            <p className="text-black dark:text-white text-xs md:text-sm font-bold mb-1 uppercase tracking-wider">Pengeluaran</p>
+            <p className="text-black dark:text-white text-lg sm:text-xl md:text-3xl font-bold truncate">Rp {expense.toLocaleString('id-ID')}</p>
+          </div>
+          <div className="w-10 h-10 md:w-14 md:h-14 shrink-0 border-2 border-black dark:border-white bg-red-400 dark:bg-red-600 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] flex items-center justify-center self-start sm:self-auto">
+            <ArrowUp size={20} className="text-black dark:text-white md:hidden" strokeWidth={3} />
+            <ArrowUp size={28} className="text-black dark:text-white hidden md:block" strokeWidth={3} />
           </div>
         </div>
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <h2 className="text-xl font-bold text-black mb-6 uppercase">Tren Pengeluaran 7 Hari Terakhir</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-8">
+        <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-4 md:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+          <h2 className="text-lg md:text-xl font-bold text-black dark:text-white mb-4 md:mb-6 uppercase">Tren Pengeluaran 7 Hari Terakhir</h2>
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={barData}>
@@ -199,8 +205,8 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-          <h2 className="text-xl font-bold text-black mb-6 uppercase">Persentase Pengeluaran per Kategori</h2>
+        <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white p-4 md:p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+          <h2 className="text-lg md:text-xl font-bold text-black dark:text-white mb-4 md:mb-6 uppercase">Persentase Pengeluaran per Kategori</h2>
           <div className="h-64 flex justify-center items-center">
             {pieData.length > 0 ? (
               <ResponsiveContainer width="100%" height="100%">
@@ -226,47 +232,47 @@ export default function DashboardPage() {
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <p className="text-black font-bold">Belum ada pengeluaran</p>
+              <p className="text-black dark:text-white font-bold">Belum ada pengeluaran</p>
             )}
           </div>
         </div>
       </div>
 
       {/* History Table */}
-      <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-        <div className="p-5 border-b-4 border-black bg-[#e6f0ff]">
-          <h2 className="text-xl font-bold text-black uppercase">Riwayat Transaksi Terakhir</h2>
+      <div className="bg-white dark:bg-zinc-800 border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] overflow-hidden">
+        <div className="p-5 border-b-4 border-black dark:border-white bg-[#e6f0ff] dark:bg-blue-900">
+          <h2 className="text-xl font-bold text-black dark:text-white uppercase">Riwayat Transaksi Terakhir</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-max">
             <thead>
-              <tr className="bg-white">
-                <th className="p-4 text-sm font-bold text-black border-b-4 border-black uppercase">Tanggal</th>
-                <th className="p-4 text-sm font-bold text-black border-b-4 border-black uppercase">Kategori</th>
-                <th className="p-4 text-sm font-bold text-black border-b-4 border-black uppercase">Deskripsi</th>
-                <th className="p-4 text-sm font-bold text-black border-b-4 border-black text-right uppercase">Nominal</th>
-                <th className="p-4 text-sm font-bold text-black border-b-4 border-black text-center uppercase">Status</th>
+              <tr className="bg-white dark:bg-zinc-800">
+                <th className="p-4 text-sm font-bold text-black dark:text-white border-b-4 border-black dark:border-white uppercase">Tanggal</th>
+                <th className="p-4 text-sm font-bold text-black dark:text-white border-b-4 border-black dark:border-white uppercase">Kategori</th>
+                <th className="p-4 text-sm font-bold text-black dark:text-white border-b-4 border-black dark:border-white uppercase">Deskripsi</th>
+                <th className="p-4 text-sm font-bold text-black dark:text-white border-b-4 border-black dark:border-white text-right uppercase">Nominal</th>
+                <th className="p-4 text-sm font-bold text-black dark:text-white border-b-4 border-black dark:border-white text-center uppercase">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y-2 divide-black">
+            <tbody className="divide-y-2 divide-black dark:divide-white">
               {recentTransactions.length > 0 ? recentTransactions.map((tx) => (
-                <tr key={tx.id} className="hover:bg-blue-50 transition-colors">
-                  <td className="p-4 text-sm text-black font-bold">
+                <tr key={tx.id} className="hover:bg-blue-50 dark:hover:bg-zinc-700 transition-colors">
+                  <td className="p-4 text-sm text-black dark:text-white font-bold">
                     {new Date(tx.created_at).toLocaleDateString('id-ID', {
                       day: '2-digit', month: 'short', year: 'numeric'
                     })}
                   </td>
                   <td className="p-4 text-sm">
-                    <span className="bg-yellow-300 text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] px-2 py-1 text-xs font-bold uppercase">
+                    <span className="bg-yellow-300 dark:bg-yellow-500 text-black dark:text-white border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] px-2 py-1 text-xs font-bold uppercase">
                       {tx.category || '-'}
                     </span>
                   </td>
-                  <td className="p-4 text-sm text-black font-bold max-w-xs truncate">{tx.description || '-'}</td>
-                  <td className={`p-4 text-sm font-bold text-right ${tx.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
+                  <td className="p-4 text-sm text-black dark:text-white font-bold max-w-xs truncate">{tx.description || '-'}</td>
+                  <td className={`p-4 text-sm font-bold text-right ${tx.type === 'income' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                     {tx.type === 'income' ? '+' : '-'} Rp {tx.amount.toLocaleString('id-ID')}
                   </td>
                   <td className="p-4 text-sm text-center">
-                    <span className="inline-flex items-center gap-1 bg-green-500 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] px-2.5 py-0.5 text-xs font-bold uppercase">
+                    <span className="inline-flex items-center gap-1 bg-green-500 text-white border-2 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] px-2.5 py-0.5 text-xs font-bold uppercase">
                       <CheckCircle2 size={12} strokeWidth={3} />
                       Selesai
                     </span>
@@ -274,7 +280,7 @@ export default function DashboardPage() {
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan="5" className="p-8 text-center text-black font-bold">Belum ada transaksi yang dicatat.</td>
+                  <td colSpan="5" className="p-8 text-center text-black dark:text-white font-bold">Belum ada transaksi yang dicatat.</td>
                 </tr>
               )}
             </tbody>

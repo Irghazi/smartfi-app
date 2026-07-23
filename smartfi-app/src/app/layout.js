@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import GlobalClickSound from '@/components/GlobalClickSound';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 export const metadata = {
   title: 'SmartFi',
@@ -13,10 +14,12 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id">
-      <body className="antialiased text-body bg-[#FFF8E7]">
-        <GlobalClickSound />
-        {children}
+    <html lang="id" suppressHydrationWarning>
+      <body className="antialiased text-body bg-[#FFF8E7] dark:bg-zinc-900 transition-colors">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <GlobalClickSound />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
