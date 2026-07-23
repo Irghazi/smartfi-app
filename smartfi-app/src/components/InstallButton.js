@@ -22,10 +22,7 @@ export default function InstallButton() {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) {
-      alert("Browser Anda belum siap untuk instalasi (mungkin aplikasi sudah terinstal atau Anda menggunakan browser iOS/Safari yang memerlukan instalasi manual via menu 'Add to Home Screen').");
-      return;
-    }
+    if (!deferredPrompt) return;
     
     deferredPrompt.prompt();
     
@@ -33,24 +30,22 @@ export default function InstallButton() {
     
     if (outcome === 'accepted') {
       console.log('PWA installation accepted');
-    } else {
-      console.log('PWA installation dismissed');
     }
     
     setDeferredPrompt(null);
     setIsInstallable(false);
   };
 
+  // Sembunyikan tombol jika tidak bisa diinstall (sudah terinstall atau tidak didukung browser)
+  if (!isInstallable) return null;
 
   return (
     <button 
       onClick={handleInstallClick}
-      className={`border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all px-4 py-2 font-bold flex items-center gap-2 text-black ${
-        isInstallable ? 'bg-yellow-300 cursor-pointer' : 'bg-gray-200 cursor-not-allowed opacity-80'
-      }`}
+      className="border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all px-4 py-2 font-bold flex items-center gap-2 bg-yellow-300 dark:bg-yellow-500 text-black cursor-pointer"
     >
       <Download size={20} />
-      {isInstallable ? 'Install App' : 'App Terinstal'}
+      Install App
     </button>
   );
 }
