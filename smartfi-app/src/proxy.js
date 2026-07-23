@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server'
  * Fungsinya me-refresh session user di setiap request
  * agar cookie sesi tetap valid dan tidak kadaluarsa.
  */
-export async function middleware(request) {
+export async function proxy(request) {
   let supabaseResponse = NextResponse.next({
     request,
   })
