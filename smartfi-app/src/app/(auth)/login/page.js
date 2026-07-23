@@ -43,6 +43,17 @@ export default function LoginPage() {
   }
 
   const handleGoogleLogin = async () => {
+    // [HACK BUST CACHE]: Hapus Service Worker PWA sebelum pindah ke Google
+    // Ini memastikan saat user dilempar balik dari Google, browser akan
+    // memuat ulang halaman dari server, bukan dari versi lama yang nyangkut.
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
